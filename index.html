@@ -11,7 +11,7 @@
     <!-- Header -->
     <header>
         <div class="logo">
-            <!-- Add logo image here -->
+            <img src="assets/logo.png">
             <h1>Recipe and Grocery List App</h1>
         </div>
         <div class="search-bar">
@@ -19,24 +19,44 @@
         </div>
         <div class="user-profile">
             <!-- Add user profile image here -->
+            <button id="settings">Settings</button>
         </div>
     </header>
 
     <!-- Navigation Bar -->
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="recipes.html">Recipes</a></li>
-            <li><a href="grocery_lists.html">Grocery Lists</a></li>
-            <li><a href="meal_plans.html">Meal Plans</a></li>
-            <li><a href="groups.html">Groups</a></li>
+            <li><a href="#" id="show-home">Home</a></li>
+            <li><a href="#" id="show-recipes">Recipes</a></li>
+            <li><a href="#" id="show-grocery-lists">Grocery Lists</a></li>
+            <li><a href="#" id="show-meal-plans">Meal Plans</a></li>
+            <li><a href="#" id="show-groups">Groups</a></li>
         </ul>
     </nav>
 
     <!-- Main Content -->
     <main>
-        <!-- Add main content here -->
+        <div id="home" class="modal">
+            <!-- Home page content -->
+        </div>
+        <div id="recipes" class="modal">
+            <!-- Recipes page content -->
+        </div>
+        <div id="grocery-lists" class="modal">
+            <!-- Grocery Lists page content -->
+        </div>
+        <div id="meal-plans" class="modal">
+            <!-- Meal Plans page content -->
+        </div>
+        <div id="groups" class="modal">
+            <!-- Groups page content -->
+        </div>
     </main>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <!-- Settings page content -->
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -46,5 +66,7 @@
             <li><a href="#">Contact</a></li>
         </ul>
     </footer>
+
+    <!-- Add JavaScript code to handle modals and interactivity -->
 </body>
 </html>
