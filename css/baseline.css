@@ -1,0 +1,89 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+header {
+    background-color: black;
+    padding: 1rem 0;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+
+header .search-bar input {
+    padding: 0.4rem;
+    font-size: 1rem;
+    width: 40%;
+}
+
+nav {
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 0;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0 1rem;
+}
+
+nav ul li a:hover {
+    color: white;
+}
+
+main {
+    padding: 2rem;
+}
+
+footer {
+    background-color: black;
+    padding: 1rem;
+    color: white;
+    text-align: center;
+}
+
+footer ul {
+    list-style-type: none;
+    padding-top: 0.5rem;
+}
+
+footer ul li {
+    display: inline;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0 1rem;
+}
+
+footer ul li a:hover {
+    color: white;
+}
