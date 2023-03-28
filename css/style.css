@@ -1,5 +1,5 @@
 *{
-    border: 1px solid gold;
+    /* border: 1px solid gold; */
     color: #fff;
 }
 
@@ -10,13 +10,13 @@ html{
 body{
     max-width:393px;
     background-color: #29315a;
-    height: 100vh;
+    height: calc(100vh - 4rem);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 3rem;
 }
 
 img {
@@ -25,19 +25,21 @@ img {
 }
 
 header img{
-    width: 5rem;
+    width: 8rem;
     height: auto;
     margin-bottom: 0;
 }
 
 header button{
-    width: 150px;
+    width: 175px;
     margin: 1rem;
     background: #c0aa5d;
     color: #000;
-    padding: 5px 10px;
+    padding: 5px;
     border-radius: 5px;
     font-weight: 700;
+    transition: all 350ms;
+
 }
 
 a {
@@ -49,10 +51,35 @@ a {
     text-transform: uppercase;
     border-radius: 5px;;
     margin-top: 2rem;
+    transition: all 350ms;
+}
+
+a:hover,
+a:focus, 
+a:active,
+button:hover{
+    transform: translateY(-5px);
 }
 
 footer{
     bottom: 0;
+    padding: 2rem 0;
+}
+
+footer a {
+    color: #c0aa5d;
+    text-decoration: none;
+    padding: 0;
+    background-color: transparent;
+    font-weight: 0;
+    text-transform: uppercase;
+    border-radius: 0;
+    margin-top: 0;
+    transition: all 350ms;
+}
+
+.text-center{
+    text-align: center;
 }
 
 .w-full{
@@ -75,12 +102,20 @@ footer{
     justify-content: center;
 }
 
+.justify-around{
+    justify-content: space-around;
+}
+
 .items-center{
     align-items: center;
 }
 
 .mx-auto{
     margin: 0 auto;
+}
+
+.pt-2{
+    padding-top: 2rem;
 }
 
 
