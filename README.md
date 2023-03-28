@@ -18,4 +18,6 @@ Grocery Grabber web application that allows users to add individual items or pas
 
 ![Domain Model](./assets/domain-model.png)
 
+## User Stories project management board
 
+![Project Management Board](./assets/project-management-board.png)
