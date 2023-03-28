@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    let state = getFromLocalStorage() ? JSON.parse(getFromLocalStorage()): [];
+    let state = getFromLocalStorage() ? JSON.parse(getFromLocalStorage()) : [];
 
     function getFromLocalStorage() {
         return localStorage.getItem("itemsList");
