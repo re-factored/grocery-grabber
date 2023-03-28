@@ -29,4 +29,5 @@ const clearButton = document.getElementById("clear_list_button");
 clearButton.addEventListener("click", (event) => {
     event.preventDefault();
     itemList.innerHTML = "";
+    localStorage.clear();
 });
