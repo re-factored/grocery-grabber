@@ -5,33 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recipe Form</title>
-  <style>
-    .ingredient-input {
-      display: flex;
-      margin-bottom: 10px;
-    }
-
-    .ingredient-input input {
-      margin-right: 10px;
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-bottom: 20px;
-    }
-
-    th,
-    td {
-      border: 1px solid black;
-      text-align: left;
-      padding: 8px;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -82,6 +56,15 @@
     </table>
     <input type="submit" value="Submit Recipe">
   </form>
+  <footer class=" w-full">
+    <nav class="flex flex-row justify-around items-center">
+      <a href="recipe-list.html" class=""><i class="fa-solid fa-book-open fa-xl" style="color: #c0aa5d;"></i></a>
+      <a href="./index.html" class=""><i class="fa-solid fa-house-chimney fa-xl" style="color: #c0aa5d;"></i></a>
+      <a href="" class=""><i class="fa-solid fa-list-check fa-xl" style="color: #c0aa5d;"></i></a>
+    </nav>
+    
+</footer>
+  
   <script>
     function capitalize(str) {
       return str.replace(/\b\w/g, function (c) {
