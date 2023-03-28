@@ -10,3 +10,12 @@ Grocery Grabber web application that allows users to add individual items or pas
 - Tom Sharkey
 - Donna Ada
 
+### Wireframe
+
+![Grocery Grabber Wireframe](./assets/wireframe.png)
+
+### Domain Model
+
+![Domain Model](./assets/domain-model.png)
+
+
