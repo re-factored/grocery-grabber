@@ -6,6 +6,7 @@ function getFromLocalStorage() {
     return localStorage.getItem("itemsList");
 }
 
+// Displays stored items on list
 function displayItems() {
     // Clear the existing list items
     itemList.innerHTML = '';
@@ -22,3 +23,4 @@ function displayItems() {
     });
 }
 displayItems();
+
