@@ -83,6 +83,12 @@
     <input type="submit" value="Submit Recipe">
   </form>
   <script>
+    function capitalize(str) {
+      return str.replace(/\b\w/g, function (c) {
+        return c.toUpperCase();
+      });
+    }
+  
     function removeIngredient(button) {
       const row = button.parentNode.parentNode;
       row.parentNode.removeChild(row);
@@ -98,8 +104,8 @@
       event.preventDefault();
       const ingredientTable = document.getElementById("ingredient-table").getElementsByTagName("tbody")[0];
   
-      const category = document.getElementById("category").value;
-      const ingredient = document.getElementById("ingredient-input").value;
+      const category = capitalize(document.getElementById("category").value);
+      const ingredient = capitalize(document.getElementById("ingredient-input").value);
       const quantity = document.getElementById("quantity-input").value;
       const unit = document.getElementById("unit-input").value;
   
@@ -116,7 +122,7 @@
       unitCell.textContent = unit;
       removeCell.innerHTML = '<button onclick="removeIngredient(this)">X</button>';
   
-      
+      // Clear input fields
       document.getElementById("category").selectedIndex = 0;
       document.getElementById("ingredient-input").value = "";
       document.getElementById("quantity-input").value = "";
@@ -126,16 +132,16 @@
     document.getElementById("recipe-form").addEventListener("submit", function (event) {
       event.preventDefault();
   
-      const recipeName = document.getElementById("recipe-name").value;
+      const recipeName = capitalize(document.getElementById("recipe-name").value);
       const ingredientTable = document.getElementById("ingredient-table");
       const ingredients = [];
   
       for (const row of ingredientTable.rows) {
-        if (row.rowIndex === 0) continue; 
+        if (row.rowIndex === 0) continue; // Skip the header row
   
         ingredients.push({
           category: row.cells[0].textContent,
-          ingredient: row.cells[1].textContent,
+          ingredientName: row.cells[1].textContent, // Updated key for the ingredient's name
           quantity: row.cells[2].textContent,
           unit: row.cells[3].textContent,
         });
@@ -148,6 +154,7 @@
   
       saveRecipeToLocalStorage(recipe);
   
+      // Clear form fields
       document.getElementById("recipe-name").value = "";
       while (ingredientTable.rows.length > 1) {
         ingredientTable.deleteRow(1);
