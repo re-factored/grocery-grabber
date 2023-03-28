@@ -1,6 +1,5 @@
 *{
     /* border: 1px solid gold; */
-    color: #fff;
 }
 
 html{
@@ -15,13 +14,24 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     padding: 3rem;
+}
+
+.container{
+    background-color: #d9d8d8;
+    flex-grow: 1;
+    margin: 2rem 0;
 }
 
 img {
     width: 100%;
     margin-bottom: 2rem;
+}
+
+header p{
+    color: #fff;
+    text-align: center;
 }
 
 header img{
