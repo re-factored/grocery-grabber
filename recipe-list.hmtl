@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Form</title>
+  <style>
+    .ingredient-input {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .ingredient-input input {
+      margin-right: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Add a Recipe</h1>
+  <form id="recipe-form" action="#" method="POST">
+    <label for="recipe-name">Recipe Name:</label>
+    <input type="text" id="recipe-name" name="recipe-name" required>
+    <br><br>
+    <h2>Ingredients:</h2>
+    <div class="ingredient-input">
+      <select name="category" id="category" aria-label="Category">
+        <option value="" selected disabled>Category</option>
+        <option value="fruit">Fruit</option>
+        <option value="vegetable">Vegetable</option>
+        <option value="canned_goods">Canned Goods</option>
+        <option value="meat">Meat</option>
+        <option value="seafood">Seafood</option>
+        <option value="deli">Deli</option>
+        <option value="bakery">Bakery</option>
+        <option value="frozen_foods">Frozen Foods</option>
+        <option value="personal_care">Personal Care</option>
+        <option value="pet">Pet</option>
+      </select>
+      <input type="text" id="ingredient-input" placeholder="Ingredient">
+      <input type="number" id="quantity-input" placeholder="Quantity">
+      <select id="unit-input">
+        <option value="g">g</option>
+        <option value="ml">ml</option>
+        <option value="tsp">tsp</option>
+        <option value="tbsp">tbsp</option>
+        <option value="cup">cup</option>
+        <option value="pcs">pcs</option>
+      </select>
+    </div>
+    <button type="button" id="add-ingredient">Add Ingredient</button>
+    <table id="ingredient-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Ingredient</th>
+          <th>Quantity</th>
+          <th>Unit</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <input type="submit" value="Submit Recipe">
+  </form>
+  <script>
+    function removeIngredient(button) {
+      const row = button.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+    }
+
+    document.getElementById("add-ingredient").addEventListener("click", function (event) {
+      event.preventDefault();
+      const ingredientTable = document.getElementById("ingredient-table").getElementsByTagName("tbody")[0];
+
+      const category = document.getElementById("category").value;
+      const ingredient = document.getElementById("ingredient-input").value;
+      const quantity = document.getElementById("quantity-input").value;
+      const unit = document.getElementById("unit-input").value;
+
+
+
+      const newRow = ingredientTable.insertRow();
+      const categoryCell = newRow.insertCell(0);
+      const ingredientCell = newRow.insertCell(1);
+      const quantityCell = newRow.insertCell(2);
+      const unitCell = newRow.insertCell(3);
+      const removeCell = newRow.insertCell(4);
+
+      categoryCell.textContent = category;
+      ingredientCell.textContent = ingredient;
+      quantityCell.textContent = quantity;
+      unitCell.textContent = unit;
+      removeCell.innerHTML = '<button onclick="removeIngredient(this)">X</button>';
+
+      // Clear input fields
+      document.getElementById("category").selectedIndex = 0;
+      document.getElementById("ingredient-input").value = "";
+      document.getElementById("quantity-input").value = "";
+      document.getElementById("unit-input").value = "g";
+    });
+  </script>
+</body>
+
+</html>
