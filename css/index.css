@@ -1,0 +1,117 @@
+/* Set the font family to Poppins */
+* {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Set the maximum width of the body to 393px and center it with margin:auto */
+  body {
+    max-width: 393px;
+    background-color: #29315a;
+    height: calc(100vh - 4rem);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 3rem;
+  }
+  
+  /* Set the color of header text to white and center it */
+  header p {
+    color: #fff;
+    text-align: center;
+  }
+  
+  /* Set the width of header image to 12rem and remove margin */
+  header img {
+    width: 12rem;
+    height: auto;
+    margin-bottom: 0;
+  }
+  
+  /* Center content of main with flexbox */
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Set the background color of the modal */
+  .modal {
+    background-color: #d9d8d8;
+    margin: 1rem 0;
+    width: 100%;
+  }
+  
+  /* Set the width of the logo to 100% and remove margin */
+  #logo img {
+    width: 100%;
+    margin-bottom: 5rem;
+  }
+  
+  /* Set the direction links to be spaced evenly and centered */
+  #directions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10rem;
+    text-align: center;
+  }
+  
+  /* Set the margin for the direction links */
+  #directions a {
+    margin: 5px;
+    max-width: 94px;
+  }
+  
+  /* Set the style for links and buttons */
+  a,
+  button {
+    color: #000;
+    text-decoration: none;
+    padding: 2px 8px;
+    background-color: #c0aa5d;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: all 350ms;
+  }
+  
+  /* Set the style for links and buttons when hovering or active */
+  a:hover,
+  a:focus,
+  a:active,
+  button:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* Set the style for the footer */
+  footer {
+    bottom: 0;
+    padding: 2rem 0;
+  }
+  
+  /* Set the style for footer links */
+  footer a {
+    color: #c0aa5d;
+    text-decoration: none;
+    padding: 0;
+    background-color: transparent;
+    font-weight: 0;
+    text-transform: uppercase;
+    border-radius: 0;
+    margin-top: 0;
+    transition: all 350ms;
+  }
+  
+  /* Set the text alignment to center */
+  .text-center {
+    text-align: center;
+  }
+  
+  /* Set the width to 100% */
+  .w-full {
+    width: 100%;
+  }
+  

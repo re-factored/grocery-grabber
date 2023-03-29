@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dropdown for categories
     function populateCategory() {
-        let categories = ["Fruit", "Vegetable", "Canned Goods", "Meat", "Seafood", "Deli", "Bakery", "Frozen Foods", "Fersonal Care", "Pet"];
+        let categories = ["Fruit", "Vegetable", "Canned Goods", "Meat", "Seafood", "Deli", "Bakery", "Frozen Foods", "Personal Care", "Pet"];
         const foodCategory = document.getElementById("category");
         for (let i = 0; i < categories.length; i++) {
             let optionEl = document.createElement("option");
@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     populateCategory();
-
 
     // Dropdown for measurements
     function populateMeasurement() {
@@ -28,13 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     populateMeasurement();
 
-
-
     let state = getFromLocalStorage() ? JSON.parse(getFromLocalStorage()) : [];
 
     function getFromLocalStorage() {
         return localStorage.getItem("itemsList");
     }
+
     // constructor function for the state object
     const Item = function (category, itemName, quantity, ucm) {
         this.category = category;
@@ -55,12 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const quantity = document.getElementById("quantity").value;
         const ucm = document.getElementById("measurement").value;
 
-        const newItem = new itemsList(category, itemName, quantity, ucm);
+        const newItem = new Item(category, itemName, quantity, ucm);
 
         state.sort((a, b) => (a.category > b.category) ? 1 : -1);
 
-        localStorage.setItem("state", JSON.stringify(state));
-        this.itemsList.push()
+        localStorage.setItem("itemsList", JSON.stringify(state));
+        state.push(newItem);
     }
 
     //Get Elements By Id 
@@ -69,6 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const quantityInput = document.getElementById('quantity');
     const ucmInput = document.getElementById('measurement');
     const addItemButton = document.getElementById('add_item_button');
+    const cancelButton = document.getElementById('cancel-button');
+    const clearButton = document.getElementById("clear-recipes");
+    const recipeList = document.getElementById("recipe-list");
+   
 
     addItemButton.addEventListener("click", (event) => {
         event.preventDefault()
@@ -83,5 +85,33 @@ document.addEventListener('DOMContentLoaded', () => {
         saveToLocalStorage();
 
     });
+
+    const groceryForm = document.getElementById('grocery-form');
+
+groceryForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const newItem = new Item(categoryInput.value, itemNameInput.value, quantityInput.value, ucmInput.value);
+  state.push(newItem);
+
+  categoryInput.value = "";
+  itemNameInput.value = "";
+  quantityInput.value = "";
+  ucmInput.value = "";
+
+  saveToLocalStorage();
+
+});
+
+
+cancelButton.addEventListener("click", () => {
+  window.history.back();
+});
+clearButton.addEventListener("click", function () {
+    localStorage.removeItem("itemsList");
+    while (recipeList.firstChild) {
+      recipeList.removeChild(recipeList.firstChild);
+    }
+});
+
 
 });
