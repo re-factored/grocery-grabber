@@ -1,7 +1,6 @@
 "use strict";
 
 const itemList = document.getElementById('item-list');
-const divEl = document.createElement('div');
 
 let id = 0;
 
@@ -21,13 +20,14 @@ function displayItems() {
 
   // Loop through the state array and create a new list item for each item
   storedItems.forEach((item) => {
+    const divEl = document.createElement('div');
+
     let cat = item.category;
     cat = cat.toLowerCase();
     cat = cat.replace(' ', '_')
-    id++;
 
     // const li = document.createElement('li');
-    // divEl.textContent = `${item.category}: ${item.itemName}, ${item.quantity} ${item.ucm}`;
+    // li.textContent = `${item.category}: ${item.itemName}, ${item.quantity} ${item.ucm}`;
 
     divEl.innerHTML = `
           <div class="categoryCheckBox">
@@ -35,6 +35,8 @@ function displayItems() {
             <label for="${cat}${id}">${item.quantity} ${item.ucm} - ${item.itemName} <span class="category ${cat}">${item.category} </span></label>
           </div>
         `;
+        
+    // itemList.appendChild(li);
     itemList.appendChild(divEl);
   });
 }
