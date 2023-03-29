@@ -183,7 +183,10 @@ footer a {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+}
+
+input[type='checkbox']{
+  accent-color: #585858;
 }
 
 .categoryCheckBox input[type='checkbox']:checked + label{
@@ -202,8 +205,6 @@ footer a {
   align-items: center;
   padding: 5px 0 5px 5px;
 }
-
-
 
 .categoryCheckBox span{
   margin-left: 5px;

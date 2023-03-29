@@ -32,10 +32,10 @@ function displayItems() {
     divEl.innerHTML = `
           <div class="categoryCheckBox">
             <input type="checkbox" id="${cat}${id}">
-            <label for="${cat}${id}">${item.quantity} ${item.ucm} - ${item.itemName} <span class="category ${cat}">${item.category} </span></label>
+            <label for="${cat}${id}">${item.itemName} - ${item.quantity} ${item.ucm} <span class="category ${cat}">${item.category} </span></label>
           </div>
         `;
-        
+
     // itemList.appendChild(li);
     itemList.appendChild(divEl);
   });
