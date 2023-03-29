@@ -35,6 +35,11 @@ header p{
   text-align: center;
 }
 
+header a {
+  max-width: 94px;
+  text-align: center;
+}
+
 header img{
   width: 12rem;
   height: auto;
