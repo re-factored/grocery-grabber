@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dropdown for categories
     function populateCategory() {
-        let categories = ["Fruit", "Vegetable", "Canned Goods", "Meat", "Seafood", "Deli", "Bakery", "Frozen Foods", "Fersonal Care", "Pet"];
+        let categories = ["Fruit", "Vegetable", "Canned Goods", "Meat", "Seafood", "Deli", "Bakery", "Frozen Foods", "Personal Care", "Pet"];
         const foodCategory = document.getElementById("category");
         for (let i = 0; i < categories.length; i++) {
             let optionEl = document.createElement("option");
