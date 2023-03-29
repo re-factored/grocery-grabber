@@ -1,84 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Form</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/7f42bb4d5d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="flex flex-column items-center w-full">
+      <img src="./assets/gg-transparent-logo.png" alt="" />
+      <h1>Add a Recipe</h1>
+    </header>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recipe Form</title>
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://kit.fontawesome.com/7f42bb4d5d.js" crossorigin="anonymous"></script>
-</head>
+    <form id="recipe-form" action="#" method="POST">
+      <label for="recipe-name">Recipe Name:</label>
+      <input type="text" id="recipe-name" name="recipe-name" required />
+      <br /><br />
+      <h2>Ingredients:</h2>
+      <div class="ingredient-input">
+        <select name="category" id="category" aria-label="Category">
+          <option value="" selected disabled>Category</option>
+          <option value="fruit">Fruit</option>
+          <option value="vegetable">Vegetable</option>
+          <option value="canned_goods">Canned Goods</option>
+          <option value="meat">Meat</option>
+          <option value="seafood">Seafood</option>
+          <option value="deli">Deli</option>
+          <option value="bakery">Bakery</option>
+          <option value="frozen_foods">Frozen Foods</option>
+          <option value="personal_care">Personal Care</option>
+          <option value="pet">Pet</option>
+        </select>
+        <input type="text" id="ingredient-input" placeholder="Ingredient" />
+        <input type="number" id="quantity-input" placeholder="Quantity" />
+        <select id="unit-input">
+          <option value="g">g</option>
+          <option value="ml">ml</option>
+          <option value="tsp">tsp</option>
+          <option value="tbsp">tbsp</option>
+          <option value="cup">cup</option>
+          <option value="pcs">pcs</option>
+        </select>
+      </div>
+      <button type="button" id="add-ingredient">Add Ingredient</button>
+      <table id="ingredient-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Ingredient</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <input type="submit" value="Submit Recipe" />
+      <button id="clear-recipes">Clear Recipes</button>
+    </form>
 
-<body>
-  <header class="flex flex-column items-center w-full">
-    <img src="./assets/gg-transparent-logo.png" alt="">
-    <h1>Add a Recipe</h1>
-  </header>
-  
-  <form id="recipe-form" action="#" method="POST">
-    <label for="recipe-name">Recipe Name:</label>
-    <input type="text" id="recipe-name" name="recipe-name" required>
-    <br><br>
-    <h2>Ingredients:</h2>
-    <div class="ingredient-input">
-      <select name="category" id="category" aria-label="Category">
-        <option value="" selected disabled>Category</option>
-        <option value="fruit">Fruit</option>
-        <option value="vegetable">Vegetable</option>
-        <option value="canned_goods">Canned Goods</option>
-        <option value="meat">Meat</option>
-        <option value="seafood">Seafood</option>
-        <option value="deli">Deli</option>
-        <option value="bakery">Bakery</option>
-        <option value="frozen_foods">Frozen Foods</option>
-        <option value="personal_care">Personal Care</option>
-        <option value="pet">Pet</option>
-      </select>
-      <input type="text" id="ingredient-input" placeholder="Ingredient">
-      <input type="number" id="quantity-input" placeholder="Quantity">
-      <select id="unit-input">
-        <option value="g">g</option>
-        <option value="ml">ml</option>
-        <option value="tsp">tsp</option>
-        <option value="tbsp">tbsp</option>
-        <option value="cup">cup</option>
-        <option value="pcs">pcs</option>
-      </select>
+    <div id="recipe-list">
+      <!-- Saved recipes will be displayed here -->
     </div>
-    <button type="button" id="add-ingredient">Add Ingredient</button>
-    <table id="ingredient-table">
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>Ingredient</th>
-          <th>Quantity</th>
-          <th>Unit</th>
-          <th>Remove</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-    <input type="submit" value="Submit Recipe">
-    <button id="clear-recipes">Clear Recipes</button>
 
-    
-
-  </form>
-  <div id="recipe-list">
-    <!-- Saved recipes will be displayed here -->
-  </div>
-  <h2>Scale Recipe</h2>
-<div>
-  <label for="recipe-name">Recipe Name:</label>
-  <input type="text" id="recipe-name">
-</div>
-<div>
-  <label for="multiplier">Multiplier:</label>
-  <select id="multiplier">
-    <script>
-      for (let i = 1; i <= 100; i++) {
+    <h2>Scale Recipe</h2>
+    <div>
+      <label for="scale-recipe-name">Recipe Name:</label>
+      <input type="text" id="scale-recipe-name" />
+    </div>
+    <div>
+      <label for="multiplier">Multiplier:</label>
+      <select id="multiplier">
+        <script>
+          for (let i = 1      ; i <= 100; i++) {
         document.write(`<option value="${i}">${i}x</option>`);
       }
     </script>
@@ -88,18 +87,155 @@
   <button id="calculate-button">Calculate</button>
 </div>
 
-  <footer class=" w-full">
-    <nav class="flex flex-row justify-around items-center">
-      <a href="./recipe-list.html" class=""><i class="fa-solid fa-book-open fa-xl" style="color: #c0aa5d;"></i></a>
-      <a href="./index.html" class=""><i class="fa-solid fa-house-chimney fa-xl" style="color: #c0aa5d;"></i></a>
-      <a href="./grocery-list.html" class=""><i class="fa-solid fa-list-check fa-xl" style="color: #c0aa5d;"></i></a>
-    </nav>
-    
+<h2>Scaled Recipe</h2>
+<table id="scaled-recipe-table">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Ingredient</th>
+      <th>Quantity</th>
+      <th>Unit</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<footer class=" w-full">
+  <nav class="flex flex-row justify-around items-center">
+    <a href="./recipe-list.html" class=""
+      ><i class="fa-solid fa-book-open fa-xl" style="color: #c0aa5d;"></i
+    ></a>
+    <a href="./index.html" class=""
+      ><i class="fa-solid fa-house-chimney fa-xl" style="color: #c0aa5d;"></i
+    ></a>
+    <a href="./grocery-list.html" class=""
+      ><i class="fa-solid fa-list-check fa-xl" style="color: #c0aa5d;"></i
+    ></a>
+  </nav>
 </footer>
+
 <script src="js/app.js"></script>
-<script src="js/recipe.js"></script>  
+<script src="js/recipe.js"></script>
+<script>
+  // Get references to the relevant DOM elements
+  const multiplierInput = document.getElementById('multiplier');
+  const calculateButton = document.getElementById('calculate-button');
+  const ingredientTableBody = document.querySelector('#ingredient-table tbody');
+  const scaledTableBody = document.querySelector('#scaled-recipe-table tbody');
+  const scaledRecipeNameInput = document.getElementById('scale-recipe-name');
 
+  // Define a function to calculate the scaled recipe
+  function calculateScaledRecipe() {
+    const multiplier = Number(multiplierInput.value);
+    // Loop through each row in the ingredient table
+    for (const row of ingredientTableBody.rows) {
+      // Get the quantity and unit cells for the current row
+      const quantityCell = row.querySelector('td.quantity');
+      const unitCell = row.querySelector('td.unit');
+      // Get the scaled quantity based on the multiplier
+      const scaledQuantity = Number(quantityCell.textContent) * multiplier;
+      // Update the quantity cell with the scaled quantity
+      quantityCell.textContent = scaledQuantity.toFixed(2);
+      // If the unit is 'pcs', update it to 'pieces'
+      if (unitCell.textContent === 'pcs') {
+        unitCell.textContent = 'pieces';
+      }
+    }
+  }
 
+  // Define a function to display the scaled recipe in a table
+  function displayScaledRecipe() {
+    // Clear any existing rows from the scaled recipe table
+    scaledTableBody.innerHTML = '';
+    // Loop through each row in the ingredient table
+    for (const row of ingredientTableBody.rows) {
+      // Get the cells for the current row
+      const categoryCell = row.querySelector('td.category');
+      const ingredientCell = row.querySelector('td.ingredient');
+      const quantityCell = row.querySelector('td.quantity');
+      const unitCell = row.querySelector('td.unit');
+      // Create a new row for the scaled ingredient
+      const scaledRow = document.createElement('tr');
+      // Add cells for the scaled ingredient
+      const scaledCategoryCell = document.createElement('td');
+      scaledCategoryCell.textContent = categoryCell.textContent;
+      scaledRow.appendChild(scaledCategoryCell);
+      const scaledIngredientCell = document.createElement('td');
+      scaledIngredientCell.textContent = ingredientCell.textContent;
+      scaledRow.appendChild(scaledIngredientCell);
+      const      scaledQuantityCell = document.createElement('td');
+    scaledQuantityCell.textContent = Number(quantityCell.textContent).toFixed(2);
+    scaledRow.appendChild(scaledQuantityCell);
+    const scaledUnitCell = document.createElement('td');
+    scaledUnitCell.textContent = unitCell.textContent;
+    scaledRow.appendChild(scaledUnitCell);
+    // Add the scaled row to the scaled recipe table
+    scaledTableBody.appendChild(scaledRow);
+  }}
+
+  // Define a function to save the scaled recipe to local storage
+  function saveScaledRecipe() {
+    const scaledRecipe = [];
+    // Loop through each row in the scaled recipe table
+    for (const row of scaledTableBody.rows) {
+      // Get the cells for the current row
+      const categoryCell = row.cells[0];
+      const ingredientCell = row.cells[1];
+      const quantityCell = row.cells[2];
+      const unitCell = row.cells[3];
+      // Create an object for the scaled ingredient and add it to the array
+      const scaledIngredient = {
+        category: categoryCell.textContent,
+        ingredient: ingredientCell.textContent,
+        quantity: Number(quantityCell.textContent),
+        unit: unitCell.textContent,
+      };
+      scaledRecipe.push(scaledIngredient);
+    }
+    // Save the scaled recipe as a JSON string in local storage
+    const scaledRecipeJson = JSON.stringify(scaledRecipe);
+    localStorage.setItem('scaledRecipe', scaledRecipeJson);
+  }
+
+  // Define a function to load the saved scaled recipe from local storage
+  function loadScaledRecipe() {
+    // Get the saved scaled recipe from local storage
+    const savedScaledRecipeJson = localStorage.getItem('scaledRecipe');
+    if (savedScaledRecipeJson) {
+      // Parse the saved recipe from JSON
+      const savedScaledRecipe = JSON.parse(savedScaledRecipeJson);
+      // Loop through each ingredient in the saved recipe
+      for (const ingredient of savedScaledRecipe) {
+        // Create a new row for the ingredient in the scaled recipe table
+        const scaledRow = document.createElement('tr');
+        // Add cells for the ingredient to the row
+        const scaledCategoryCell = document.createElement('td');
+        scaledCategoryCell.textContent = ingredient.category;
+        scaledRow.appendChild(scaledCategoryCell);
+        const scaledIngredientCell = document.createElement('td');
+        scaledIngredientCell.textContent = ingredient.ingredient;
+        scaledRow.appendChild(scaledIngredientCell);
+        const scaledQuantityCell = document.createElement('td');
+        scaledQuantityCell.textContent = ingredient.quantity.toFixed(2);
+        scaledRow.appendChild(scaledQuantityCell);
+        const scaledUnitCell = document.createElement('td');
+        scaledUnitCell.textContent = ingredient.unit;
+        scaledRow.appendChild(scaledUnitCell);
+        // Add the row to the scaled recipe table
+        scaledTableBody.appendChild(scaledRow);
+      }
+    }
+  }
+
+  // Call the loadScaledRecipe function on page load
+  window.addEventListener('load', loadScaledRecipe);
+
+  // Add an event listener to the calculate button to calculate and display the scaled recipe
+  calculateButton.addEventListener('click', () => {
+    calculateScaledRecipe();
+    displayScaledRecipe();
+    saveScaledRecipe();
+  });
+</script>
 </body>
-
 </html>

@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function populateMeasurement() {
         let measurementOptions = ["ml", "tsp", "tbsp", "cup", "pcs"];
         const measurementEl = document.getElementById("measurement");
+        console.log(measurementEl);
         for (let i = 0; i < measurementOptions.length; i++) {
             let optionElMeasurement = document.createElement("option");
             optionElMeasurement.textContent = measurementOptions[i];
