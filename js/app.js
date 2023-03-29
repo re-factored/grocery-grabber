@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ucmInput = document.getElementById('measurement');
     const addItemButton = document.getElementById('add_item_button');
     const cancelButton = document.getElementById('cancel-button');
-    const cancelButton2 = document.getElementById('cancel-button-2');
+   
 
     addItemButton.addEventListener("click", (event) => {
         event.preventDefault()
@@ -104,8 +104,5 @@ groceryForm.addEventListener("submit", (event) => {
 cancelButton.addEventListener("click", () => {
   window.history.back();
 });
-cancelButton2.addEventListener("click", () => {
-    window.history.back();
-  });
 
 });
