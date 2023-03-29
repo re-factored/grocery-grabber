@@ -3,7 +3,7 @@
   }
   
   body{
-    max-width:393px;
+    max-width: 393px;
     background-color: #29315a;
     height: calc(100vh - 4rem);
     margin: 0 auto;
@@ -25,6 +25,38 @@
     margin-bottom: 0;
   }
   
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    background-color: #d9d8d8;
+    margin: 1rem 0;
+    width: 100%;
+  }
+  
+  #logo img {
+    width: 100%;
+    margin-bottom: 5rem;
+  }
+  
+  #directions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10rem;
+    text-align: center;
+    
+  }
+  
+  #directions a {
+    margin: 5px;
+    max-width: 94px;
+  }
+
   a,
   button {
     color: #000;
