@@ -7,6 +7,9 @@
   <title>Recipe Form</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="https://kit.fontawesome.com/7f42bb4d5d.js" crossorigin="anonymous"></script>
+  <style>
+ 
+  </style>
 </head>
 
 <body>
@@ -15,24 +18,25 @@
     <h1>Add a Recipe</h1>
   </header>
   
-  <form id="recipe-form" action="#" method="POST">
+
+  <form id="recipe-form" method="POST" onsubmit="submitRecipe(event)">
     <label for="recipe-name">Recipe Name:</label>
     <input type="text" id="recipe-name" name="recipe-name" required>
     <br><br>
-    <h2>Ingredients:</h2>
+    <h2>Recipe Ingredients:</h2>
     <div class="ingredient-input">
       <select name="category" id="category" aria-label="Category">
         <option value="" selected disabled>Category</option>
-        <option value="fruit">Fruit</option>
-        <option value="vegetable">Vegetable</option>
-        <option value="canned_goods">Canned Goods</option>
-        <option value="meat">Meat</option>
-        <option value="seafood">Seafood</option>
-        <option value="deli">Deli</option>
-        <option value="bakery">Bakery</option>
-        <option value="frozen_foods">Frozen Foods</option>
-        <option value="personal_care">Personal Care</option>
-        <option value="pet">Pet</option>
+        <option value="Fruit">Fruit</option>
+        <option value="Vegetable">Vegetable</option>
+        <option value="Canned Goods">Canned Goods</option>
+        <option value="Meat">Meat</option>
+        <option value="Seafood">Seafood</option>
+        <option value="Deli">Deli</option>
+        <option value="Bakery">Bakery</option>
+        <option value="Frozen Foods">Frozen Foods</option>
+        <option value="Personal C are">Personal Care</option>
+        <option value="Pet">Pet</option>
       </select>
       <input type="text" id="ingredient-input" placeholder="Ingredient">
       <input type="number" id="quantity-input" placeholder="Quantity">
@@ -45,6 +49,9 @@
         <option value="pcs">pcs</option>
       </select>
     </div>
+    
+  
+    
     <button type="button" id="add-ingredient">Add Ingredient</button>
     <table id="ingredient-table">
       <thead>
@@ -61,6 +68,7 @@
     </table>
     <input type="submit" value="Submit Recipe">
   </form>
+
   <table id="recipe-name-table">
     <thead>
       <tr>
@@ -70,14 +78,57 @@
     <tbody>
     </tbody>
   </table>
-  <footer class=" w-full">
+
+  <h2>Add Ingredient to Shopping List:</h2>
+<div class="ingredient-input">
+  <select name="shopping-category" id="shopping-category" aria-label="Category">
+    <option value="" selected disabled>Category</option>
+    <option value="Fruit">Fruit</option>
+    <option value="Vegetable">Vegetable</option>
+    <option value="Canned Goods">Canned Goods</option>
+    <option value="Meat">Meat</option>
+    <option value="Seafood">Seafood</option>
+    <option value="Deli">Deli</option>
+    <option value="Bakery">Bakery</option>
+    <option value="Frozen Foods">Frozen Foods</option>
+    <option value="Personal Care">Personal Care</option>
+    <option value="Pet">Pet</option>
+  </select>
+  <input type="text" id="shopping-ingredient-input" placeholder="Ingredient">
+  <input type="number" id="shopping-quantity-input" placeholder="Quantity">
+  <select id="shopping-unit-input">
+    <option value="g">g</option>
+    <option value="ml">ml</option>
+    <option value="tsp">tsp</option>
+    <option value="tbsp">tbsp</option>
+    <option value="cup">cup</option>
+    <option value="pcs">pcs</option>
+  </select>
+  <button type="button" id="add-shopping-ingredient">Add Ingredient</button>
+</div>
+
+  <h2>Shopping List</h2>
+  <table id="selected-recipe-ingredients">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Ingredient</th>
+        <th>Quantity</th>
+        <th>Unit</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+
+  <!-- <footer class=" w-full">
     <nav class="flex flex-row justify-around items-center">
       <a href="recipe-list.html" class=""><i class="fa-solid fa-book-open fa-xl" style="color: #c0aa5d;"></i></a>
       <a href="./splash.html" class=""><i class="fa-solid fa-house-chimney fa-xl" style="color: #c0aa5d;"></i></a>
       <a href="" class=""><i class="fa-solid fa-list-check fa-xl" style="color: #c0aa5d;"></i></a>
     </nav>
     
-</footer>
+</footer> -->
   
   <script>
 
@@ -112,21 +163,39 @@ function addRecipeNameToTable(recipeName) {
 function addRecipe(button) {
   const row = button.parentNode.parentNode;
   const recipeName = row.cells[0].textContent;
-  alert('Add recipe: ' + recipeName);
-  // Implement your logic for adding the recipe here
+
+  const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+  const selectedRecipe = recipes.find(recipe => recipe.name === recipeName);
+
+  if (selectedRecipe) {
+    const ingredientTable = document.getElementById("selected-recipe-ingredients").getElementsByTagName("tbody")[0];
+
+    selectedRecipe.ingredients.forEach(ingredient => {
+      const newRow = ingredientTable.insertRow();
+      const categoryCell = newRow.insertCell(0);
+      const ingredientCell = newRow.insertCell(1);
+      const quantityCell = newRow.insertCell(2);
+      const unitCell = newRow.insertCell(3);
+      const removeCell = newRow.insertCell(4); // Add this line
+
+      categoryCell.textContent = ingredient.category;
+      ingredientCell.textContent = ingredient.ingredientName;
+      quantityCell.textContent = ingredient.quantity;
+      unitCell.textContent = ingredient.unit;
+      removeCell.innerHTML = '<button onclick="removeIngredient(this)"><i class="fa-solid fa-xmark" style="color: #D60A0A;"></i></button>'; // Add this line
+    });
+  }
 }
 
 function removeRecipe(button) {
   const row = button.parentNode.parentNode;
   const recipeName = row.cells[0].textContent;
-  alert('Remove recipe: ' + recipeName);
-
-  // Remove the recipe from localStorage
+  
   const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
   const updatedRecipes = recipes.filter(recipe => recipe.name !== recipeName);
   localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
 
-  // Remove the row from the table
+  
   row.parentNode.removeChild(row);
 }
 
@@ -150,7 +219,7 @@ document.getElementById("add-ingredient").addEventListener("click", function (ev
   ingredientCell.textContent = ingredient;
   quantityCell.textContent = quantity;
   unitCell.textContent = unit;
-  removeCell.innerHTML = '<button onclick="removeIngredient(this)">X</button>';
+  removeCell.innerHTML = '<button onclick="removeIngredient(this)"><i class="fa-solid fa-xmark" style="color: #D60A0A;"></i></button>';
 
   document.getElementById("category").selectedIndex = 0;
   document.getElementById("ingredient-input").value = "";
@@ -158,23 +227,19 @@ document.getElementById("add-ingredient").addEventListener("click", function (ev
   document.getElementById("unit-input").value = "g";
 });
 
-document.getElementById("recipe-form").addEventListener("submit", function (event) {
-  event.preventDefault();
+function submitRecipe(event) {
+  event.preventDefault(); // Prevent the form from submitting
 
-  const recipeName = capitalize(document.getElementById("recipe-name").value);
-  const ingredientTable = document.getElementById("ingredient-table");
-  const ingredients = [];
+  const recipeName = document.getElementById("recipe-name").value;
 
-  for (const row of ingredientTable.rows) {
-    if (row.rowIndex === 0) continue;
-
-    ingredients.push({
+  const ingredients = Array.from(document.getElementById("ingredient-table").getElementsByTagName("tbody")[0].rows).map(row => {
+    return {
       category: row.cells[0].textContent,
       ingredientName: row.cells[1].textContent,
       quantity: row.cells[2].textContent,
       unit: row.cells[3].textContent,
-    });
-  }
+    };
+  });
 
   const recipe = {
     name: recipeName,
@@ -182,15 +247,45 @@ document.getElementById("recipe-form").addEventListener("submit", function (even
   };
 
   saveRecipeToLocalStorage(recipe);
-
-  // Add the recipe name to the new table
   addRecipeNameToTable(recipeName);
 
   document.getElementById("recipe-name").value = "";
-  while (ingredientTable.rows.length > 1) {
-    ingredientTable.deleteRow(1);
-  }
+  document.getElementById("ingredient-table").getElementsByTagName("tbody")[0].innerHTML = "";
+}
+
+
+function addShoppingIngredient() {
+  const shoppingIngredientTable = document.getElementById("selected-recipe-ingredients").getElementsByTagName("tbody")[0];
+
+  const category = capitalize(document.getElementById("shopping-category").value);
+  const ingredient = capitalize(document.getElementById("shopping-ingredient-input").value);
+  const quantity = document.getElementById("shopping-quantity-input").value;
+  const unit = document.getElementById("shopping-unit-input").value;
+
+  const newRow = shoppingIngredientTable.insertRow();
+  const categoryCell = newRow.insertCell(0);
+  const ingredientCell = newRow.insertCell(1);
+  const quantityCell = newRow.insertCell(2);
+  const unitCell = newRow.insertCell(3);
+  const removeCell = newRow.insertCell(4);
+
+  categoryCell.textContent = category;
+  ingredientCell.textContent = ingredient;
+  quantityCell.textContent = quantity;
+  unitCell.textContent = unit;
+  removeCell.innerHTML = '<button onclick="removeIngredient(this)"><i class="fa-solid fa-xmark" style="color: #D60A0A;"></i></button>';
+
+  document.getElementById("shopping-category").selectedIndex = 0;
+  document.getElementById("shopping-ingredient-input").value = "";
+  document.getElementById("shopping-quantity-input").value = "";
+  document.getElementById("shopping-unit-input").value = "g";
+}
+
+document.getElementById("add-shopping-ingredient").addEventListener("click", function (event) {
+  event.preventDefault();
+  addShoppingIngredient();
 });
+
   </script>
 </body>
 
