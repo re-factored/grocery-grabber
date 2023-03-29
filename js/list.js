@@ -35,7 +35,7 @@ function displayItems() {
             <label for="${cat}${id}">${item.quantity} ${item.ucm} - ${item.itemName} <span class="category ${cat}">${item.category} </span></label>
           </div>
         `;
-        
+
     // itemList.appendChild(li);
     itemList.appendChild(divEl);
   });
@@ -47,5 +47,5 @@ const clearButton = document.getElementById("clear_list_button");
 clearButton.addEventListener("click", (event) => {
   event.preventDefault();
   itemList.innerHTML = "";
-  localStorage.clear();
+  localStorage.removeItem("itemsList");
 });
