@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     populateCategory();
 
-
     // Dropdown for measurements
     function populateMeasurement() {
         let measurementOptions = ["ml", "tsp", "tbsp", "cup", "pcs"];
@@ -28,13 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     populateMeasurement();
 
-
-
     let state = getFromLocalStorage() ? JSON.parse(getFromLocalStorage()) : [];
 
     function getFromLocalStorage() {
         return localStorage.getItem("itemsList");
     }
+
     // constructor function for the state object
     const Item = function (category, itemName, quantity, ucm) {
         this.category = category;
@@ -55,12 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const quantity = document.getElementById("quantity").value;
         const ucm = document.getElementById("measurement").value;
 
-        const newItem = new itemsList(category, itemName, quantity, ucm);
+        const newItem = new Item(category, itemName, quantity, ucm);
 
         state.sort((a, b) => (a.category > b.category) ? 1 : -1);
 
-        localStorage.setItem("state", JSON.stringify(state));
-        this.itemsList.push()
+        localStorage.setItem("itemsList", JSON.stringify(state));
+        state.push(newItem);
     }
 
     //Get Elements By Id 
@@ -83,5 +81,26 @@ document.addEventListener('DOMContentLoaded', () => {
         saveToLocalStorage();
 
     });
+
+    const groceryForm = document.getElementById('grocery-form');
+
+groceryForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const newItem = new Item(categoryInput.value, itemNameInput.value, quantityInput.value, ucmInput.value);
+  state.push(newItem);
+
+  categoryInput.value = "";
+  itemNameInput.value = "";
+  quantityInput.value = "";
+  ucmInput.value = "";
+
+  saveToLocalStorage();
+
+});
+
+const cancelButton = document.getElementById('cancel_button');
+cancelButton.addEventListener("click", () => {
+  window.history.back();
+});
 
 });

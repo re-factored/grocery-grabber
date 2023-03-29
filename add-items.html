@@ -22,31 +22,34 @@
     <form id="grocery-form">
       <fieldset>
         <legend>Add Item</legend>
-        <div class="form-group category-group">
-          <select name="category" id="category" aria-label="Category">
-            <option value="" selected disabled>Category</option>
-
+        
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <select name="category" id="category" aria-label="Category" required>
+            <option value="" selected disabled>Select a category</option>
           </select>
         </div>
 
         <div class="form-group">
           <input type="text" id="item_name" name="item_name" placeholder="Item Name" required>
         </div>
-
+        
         <div class="form-group">
           <div class="form-group-inline">
             <input type="number" id="quantity" name="quantity" min="1" placeholder="Quantity" required>
           </div>
           <label for="measurement" class="visually-hidden">UCM:</label>
-          <select name="measurement" id="measurement" aria-label="Measurement">
-            <option value="" selected disabled>UCM</option>
-
+          <select name="measurement" id="measurement" aria-label="Measurement" required>
+            <option value="" selected disabled>Select a measurement</option>
           </select>
         </div>
+        
+        <div class="form-group">
+          <button type="submit" id="add_item_button">Add Item +</button>
+          <button type="button" id="cancel_button">Cancel</button>
         </div>
+        
       </fieldset>
-      <button type="submit" id="add_item_button">Add Item +</button>
-
     </form>
   </main>
 

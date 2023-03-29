@@ -77,6 +77,22 @@ button:hover{
   transform: translateY(-3px);
 }
 
+.cancel-button {
+  color: #000;
+  text-decoration: none;
+  padding: 2px 8px;
+  background-color: #c0aa5d;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-radius: 5px;;
+  transition: all 350ms;
+}
+
+.cancel-button:hover {
+  transform: translateY(-3px);
+}
+
+
 footer{
   bottom: 0;
   padding: 2rem 0;
