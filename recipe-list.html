@@ -61,6 +61,15 @@
     </table>
     <input type="submit" value="Submit Recipe">
   </form>
+  <table id="recipe-name-table">
+    <thead>
+      <tr>
+        <th>Recipe Name</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
   <footer class=" w-full">
     <nav class="flex flex-row justify-around items-center">
       <a href="recipe-list.html" class=""><i class="fa-solid fa-book-open fa-xl" style="color: #c0aa5d;"></i></a>
@@ -71,82 +80,117 @@
 </footer>
   
   <script>
-    function capitalize(str) {
-      return str.replace(/\b\w/g, function (c) {
-        return c.toUpperCase();
-      });
-    }
-  
-    function removeIngredient(button) {
-      const row = button.parentNode.parentNode;
-      row.parentNode.removeChild(row);
-    }
-  
-    function saveRecipeToLocalStorage(recipe) {
-      const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
-      recipes.push(recipe);
-      localStorage.setItem("recipes", JSON.stringify(recipes));
-    }
-  
-    document.getElementById("add-ingredient").addEventListener("click", function (event) {
-      event.preventDefault();
-      const ingredientTable = document.getElementById("ingredient-table").getElementsByTagName("tbody")[0];
-  
-      const category = capitalize(document.getElementById("category").value);
-      const ingredient = capitalize(document.getElementById("ingredient-input").value);
-      const quantity = document.getElementById("quantity-input").value;
-      const unit = document.getElementById("unit-input").value;
-  
-      const newRow = ingredientTable.insertRow();
-      const categoryCell = newRow.insertCell(0);
-      const ingredientCell = newRow.insertCell(1);
-      const quantityCell = newRow.insertCell(2);
-      const unitCell = newRow.insertCell(3);
-      const removeCell = newRow.insertCell(4);
-  
-      categoryCell.textContent = category;
-      ingredientCell.textContent = ingredient;
-      quantityCell.textContent = quantity;
-      unitCell.textContent = unit;
-      removeCell.innerHTML = '<button onclick="removeIngredient(this)">X</button>';
-  
-  
-      document.getElementById("category").selectedIndex = 0;
-      document.getElementById("ingredient-input").value = "";
-      document.getElementById("quantity-input").value = "";
-      document.getElementById("unit-input").value = "g";
+
+// Capitalize first letter
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function removeIngredient(button) {
+  const row = button.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+}
+
+function saveRecipeToLocalStorage(recipe) {
+  const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+  recipes.push(recipe);
+  localStorage.setItem("recipes", JSON.stringify(recipes));
+}
+
+function addRecipeNameToTable(recipeName) {
+  const recipeNameTable = document.getElementById("recipe-name-table").getElementsByTagName("tbody")[0];
+  const newRow = recipeNameTable.insertRow();
+  const nameCell = newRow.insertCell(0);
+  const addButtonCell = newRow.insertCell(1);
+  const removeButtonCell = newRow.insertCell(2);
+
+  nameCell.textContent = recipeName;
+  addButtonCell.innerHTML = '<button onclick="addRecipe(this)">Add</button>';
+  removeButtonCell.innerHTML = '<button onclick="removeRecipe(this)">Remove</button>';
+}
+
+function addRecipe(button) {
+  const row = button.parentNode.parentNode;
+  const recipeName = row.cells[0].textContent;
+  alert('Add recipe: ' + recipeName);
+  // Implement your logic for adding the recipe here
+}
+
+function removeRecipe(button) {
+  const row = button.parentNode.parentNode;
+  const recipeName = row.cells[0].textContent;
+  alert('Remove recipe: ' + recipeName);
+
+  // Remove the recipe from localStorage
+  const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+  const updatedRecipes = recipes.filter(recipe => recipe.name !== recipeName);
+  localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+
+  // Remove the row from the table
+  row.parentNode.removeChild(row);
+}
+
+document.getElementById("add-ingredient").addEventListener("click", function (event) {
+  event.preventDefault();
+  const ingredientTable = document.getElementById("ingredient-table").getElementsByTagName("tbody")[0];
+
+  const category = capitalize(document.getElementById("category").value);
+  const ingredient = capitalize(document.getElementById("ingredient-input").value);
+  const quantity = document.getElementById("quantity-input").value;
+  const unit = document.getElementById("unit-input").value;
+
+  const newRow = ingredientTable.insertRow();
+  const categoryCell = newRow.insertCell(0);
+  const ingredientCell = newRow.insertCell(1);
+  const quantityCell = newRow.insertCell(2);
+  const unitCell = newRow.insertCell(3);
+  const removeCell = newRow.insertCell(4);
+
+  categoryCell.textContent = category;
+  ingredientCell.textContent = ingredient;
+  quantityCell.textContent = quantity;
+  unitCell.textContent = unit;
+  removeCell.innerHTML = '<button onclick="removeIngredient(this)">X</button>';
+
+  document.getElementById("category").selectedIndex = 0;
+  document.getElementById("ingredient-input").value = "";
+  document.getElementById("quantity-input").value = "";
+  document.getElementById("unit-input").value = "g";
+});
+
+document.getElementById("recipe-form").addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const recipeName = capitalize(document.getElementById("recipe-name").value);
+  const ingredientTable = document.getElementById("ingredient-table");
+  const ingredients = [];
+
+  for (const row of ingredientTable.rows) {
+    if (row.rowIndex === 0) continue;
+
+    ingredients.push({
+      category: row.cells[0].textContent,
+      ingredientName: row.cells[1].textContent,
+      quantity: row.cells[2].textContent,
+      unit: row.cells[3].textContent,
     });
-  
-    document.getElementById("recipe-form").addEventListener("submit", function (event) {
-      event.preventDefault();
-  
-      const recipeName = capitalize(document.getElementById("recipe-name").value);
-      const ingredientTable = document.getElementById("ingredient-table");
-      const ingredients = [];
-  
-      for (const row of ingredientTable.rows) {
-        if (row.rowIndex === 0) continue; 
-  
-        ingredients.push({
-          category: row.cells[0].textContent,
-          ingredientName: row.cells[1].textContent, 
-          quantity: row.cells[2].textContent,
-          unit: row.cells[3].textContent,
-        });
-      }
-  
-      const recipe = {
-        name: recipeName,
-        ingredients: ingredients,
-      };
-  
-      saveRecipeToLocalStorage(recipe);
-  
-      document.getElementById("recipe-name").value = "";
-      while (ingredientTable.rows.length > 1) {
-        ingredientTable.deleteRow(1);
-      }
-    });
+  }
+
+  const recipe = {
+    name: recipeName,
+    ingredients: ingredients,
+  };
+
+  saveRecipeToLocalStorage(recipe);
+
+  // Add the recipe name to the new table
+  addRecipeNameToTable(recipeName);
+
+  document.getElementById("recipe-name").value = "";
+  while (ingredientTable.rows.length > 1) {
+    ingredientTable.deleteRow(1);
+  }
+});
   </script>
 </body>
 
