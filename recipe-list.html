@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recipe Form</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/7f42bb4d5d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -105,7 +106,7 @@
       unitCell.textContent = unit;
       removeCell.innerHTML = '<button onclick="removeIngredient(this)">X</button>';
   
-      // Clear input fields
+  
       document.getElementById("category").selectedIndex = 0;
       document.getElementById("ingredient-input").value = "";
       document.getElementById("quantity-input").value = "";
@@ -120,11 +121,11 @@
       const ingredients = [];
   
       for (const row of ingredientTable.rows) {
-        if (row.rowIndex === 0) continue; // Skip the header row
+        if (row.rowIndex === 0) continue; 
   
         ingredients.push({
           category: row.cells[0].textContent,
-          ingredientName: row.cells[1].textContent, // Updated key for the ingredient's name
+          ingredientName: row.cells[1].textContent, 
           quantity: row.cells[2].textContent,
           unit: row.cells[3].textContent,
         });
@@ -137,7 +138,6 @@
   
       saveRecipeToLocalStorage(recipe);
   
-      // Clear form fields
       document.getElementById("recipe-name").value = "";
       while (ingredientTable.rows.length > 1) {
         ingredientTable.deleteRow(1);
