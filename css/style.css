@@ -92,7 +92,9 @@ button:hover{
   transform: translateY(-3px);
 }
 
-
+#recipe-list {
+  background-color: #fff;
+}
 footer{
   bottom: 0;
   padding: 2rem 0;

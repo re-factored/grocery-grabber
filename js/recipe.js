@@ -74,3 +74,28 @@ function capitalize(str) {
       ingredientTable.deleteRow(1);
     }
   });
+  function displayRecipes() {
+    const savedRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
+  
+    // Clear existing list of recipes
+    const recipeList = document.getElementById("recipe-list");
+    recipeList.innerHTML = "";
+  
+    // Loop through saved recipes and create a new list item for each
+    savedRecipes.forEach(recipe => {
+      const recipeName = document.createElement("h3");
+      recipeName.textContent = recipe.name;
+      recipeList.appendChild(recipeName);
+  
+      const ingredientList = document.createElement("ul");
+      recipe.ingredients.forEach(ingredient => {
+        const ingredientItem = document.createElement("li");
+        ingredientItem.textContent = `${ingredient.category}: ${ingredient.ingredientName} - ${ingredient.quantity} ${ingredient.unit}`;
+        ingredientList.appendChild(ingredientItem);
+      });
+      recipeList.appendChild(ingredientList);
+    });
+  }
+  
+  // Call the function to display saved recipes on page load
+  displayRecipes();

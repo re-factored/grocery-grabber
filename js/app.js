@@ -68,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const ucmInput = document.getElementById('measurement');
     const addItemButton = document.getElementById('add_item_button');
     const cancelButton = document.getElementById('cancel-button');
+    const clearButton = document.getElementById("clear-recipes");
+    const recipeList = document.getElementById("recipe-list");
    
 
     addItemButton.addEventListener("click", (event) => {
@@ -104,5 +106,12 @@ groceryForm.addEventListener("submit", (event) => {
 cancelButton.addEventListener("click", () => {
   window.history.back();
 });
+clearButton.addEventListener("click", function () {
+    localStorage.removeItem("itemsList");
+    while (recipeList.firstChild) {
+      recipeList.removeChild(recipeList.firstChild);
+    }
+});
+
 
 });
