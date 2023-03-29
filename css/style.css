@@ -95,6 +95,49 @@ button:hover{
 #recipe-list {
   background-color: #fff;
 }
+
+#scale-recipe-section {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#scale-recipe-section h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#scale-recipe-section label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+#scale-recipe-section input[type="text"],
+#scale-recipe-section select {
+  font-size: 14px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+#scale-recipe-section button {
+  font-size: 14px;
+  padding: 5px 10px;
+  background-color: #428bca;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#scale-recipe-section button:hover {
+  background-color: #3071a9;
+}
+
 footer{
   bottom: 0;
   padding: 2rem 0;

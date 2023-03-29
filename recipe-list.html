@@ -68,6 +68,25 @@
   <div id="recipe-list">
     <!-- Saved recipes will be displayed here -->
   </div>
+  <h2>Scale Recipe</h2>
+<div>
+  <label for="recipe-name">Recipe Name:</label>
+  <input type="text" id="recipe-name">
+</div>
+<div>
+  <label for="multiplier">Multiplier:</label>
+  <select id="multiplier">
+    <script>
+      for (let i = 1; i <= 100; i++) {
+        document.write(`<option value="${i}">${i}x</option>`);
+      }
+    </script>
+  </select>
+</div>
+<div>
+  <button id="calculate-button">Calculate</button>
+</div>
+
   <footer class=" w-full">
     <nav class="flex flex-row justify-around items-center">
       <a href="./recipe-list.html" class=""><i class="fa-solid fa-book-open fa-xl" style="color: #c0aa5d;"></i></a>

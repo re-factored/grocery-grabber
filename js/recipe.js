@@ -1,3 +1,30 @@
+function scaleRecipe(recipeName, multiplier) {
+  const savedRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
+  const recipe = savedRecipes.find(r => r.name === recipeName);
+  
+  if (recipe) {
+    const scaledIngredients = recipe.ingredients.map(ingredient => ({
+      ...ingredient,
+      quantity: (parseFloat(ingredient.quantity) * multiplier).toFixed(2)
+    }));
+    
+    const scaledRecipe = {
+      name: recipe.name + " x " + multiplier,
+      ingredients: scaledIngredients
+    };
+    
+    saveRecipeToLocalStorage(scaledRecipe);
+    
+    // Call the displayRecipes function to update the displayed recipe list
+    displayRecipes();
+    
+    return scaledRecipe;
+  } else {
+    console.log("Recipe not found.");
+  }
+}
+
+
 function capitalize(str) {
     return str.replace(/\b\w/g, function (c) {
       return c.toUpperCase();
