@@ -2,6 +2,7 @@
 
 // Loads HTML before JS
 document.addEventListener('DOMContentLoaded', () => {
+   
 
     // Dropdown for categories
     function populateCategory() {
@@ -69,7 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const addItemButton = document.getElementById('add_item_button');
     const cancelButton = document.getElementById('cancel-button');
     const clearButton = document.getElementById("clear-recipes");
+    clearButton.addEventListener("click", clearRecipes);
     const recipeList = document.getElementById("recipe-list");
+    recipeList.innerHTML = ""; // clears the contents of the recipe list
+
    
 
     addItemButton.addEventListener("click", (event) => {
@@ -106,12 +110,43 @@ groceryForm.addEventListener("submit", (event) => {
 cancelButton.addEventListener("click", () => {
   window.history.back();
 });
-clearButton.addEventListener("click", function () {
-    localStorage.removeItem("itemsList");
+
+
+function clearRecipes() {
+    const recipeList = document.getElementById("recipe-list");
     while (recipeList.firstChild) {
       recipeList.removeChild(recipeList.firstChild);
     }
-});
+  }
 
+
+
+
+
+function scaleRecipe(recipeName, multiplier) {
+    const savedRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
+    const recipe = savedRecipes.find(r => r.name === recipeName);
+    
+    if (recipe) {
+      const scaledIngredients = recipe.ingredients.map(ingredient => ({
+        ...ingredient,
+        quantity: (parseFloat(ingredient.quantity) * multiplier).toFixed(2)
+      }));
+      
+      const scaledRecipe = {
+        name: recipe.name + " x " + multiplier,
+        ingredients: scaledIngredients
+      };
+      
+      saveRecipeToLocalStorage(scaledRecipe);
+      
+      // Call the displayRecipes function to update the displayed recipe list
+      displayRecipes();
+      
+      return scaledRecipe;
+    } else {
+      console.log("Recipe not found.");
+    }
+  }    
 
 });
