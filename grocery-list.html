@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grocery List | Grocery Grabber</title>
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/7f42bb4d5d.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/7f42bb4d5d.js" crossorigin="anonymous"></script> 
+    <!-- Can this script go somewhere else or should it be here? -->
 </head>
 <body>
 
@@ -14,24 +16,25 @@
     <img src="./assets/gg-transparent-logo.png" alt="">
     <div class="buttonContainer flex flex-row w-full justify-around">
       <a href="./add-items.html">Add Item +</a>
-      <a href="./">Add from Recipe +</a>
+      <a href="./recipe-list.html">Add from Recipe +</a>
     </div>
   </header>
 
-  <main class="flex flex-column items-center container bg-light-gray ">
-    <ul id="item-list">No Items in List!</ul>
+  <main class="flex flex-column items-start container bg-light-gray">
+    <!-- <li id="item-list">No Items in List!</li> -->
+    <div id="item-list">No Items in List!</div>
     <button type="reset" id="clear_list_button">Clear List</button>
   </main>
 
   <footer class=" w-full">
       <nav class="flex flex-row justify-around items-center">
-        <a href="recipe-list.html" class=""><i class="fa-solid fa-book-open fa-xl" style="color: #c0aa5d;"></i></a>
+        <a href="./recipe-list.html" class=""><i class="fa-solid fa-book-open fa-xl" style="color: #c0aa5d;"></i></a>
         <a href="./index.html" class=""><i class="fa-solid fa-house-chimney fa-xl" style="color: #c0aa5d;"></i></a>
-        <a href="" class=""><i class="fa-solid fa-list-check fa-xl" style="color: #c0aa5d;"></i></a>
+        <a href="./grocery-list.html" class=""><i class="fa-solid fa-list-check fa-xl" style="color: #c0aa5d;"></i></a>
       </nav>
-      <script src="app.js"></script>
-      <script src="list.js"></script>
+      
   </footer>
-
+  <script src="js/app.js"></script>
+  <script src="js/list.js"></script>
 </body>
 </html>

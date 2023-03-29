@@ -35,6 +35,11 @@ header p{
   text-align: center;
 }
 
+header a {
+  max-width: 94px;
+  text-align: center;
+}
+
 header img{
   width: 12rem;
   height: auto;
@@ -72,6 +77,24 @@ button:hover{
   transform: translateY(-3px);
 }
 
+.cancel-button {
+  color: #000;
+  text-decoration: none;
+  padding: 2px 8px;
+  background-color: #c0aa5d;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-radius: 5px;;
+  transition: all 350ms;
+}
+
+.cancel-button:hover {
+  transform: translateY(-3px);
+}
+
+#recipe-list {
+  background-color: #fff;
+}
 footer{
   bottom: 0;
   padding: 2rem 0;
@@ -125,6 +148,10 @@ footer a {
   align-items: center;
 }
 
+.items-start{
+  align-items: start;
+}
+
 .mx-auto{
   margin: 0 auto;
 }
@@ -145,8 +172,76 @@ footer a {
 #grocery-form legend {
     font-weight: 800;
 }
+
 .submit-btn {
     display: block;
     margin: 0 auto;
+}
+
+/* Categories Styling */
+.categoryCheckBox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.categoryCheckBox input[type='checkbox']:checked + label{
+  text-decoration: line-through;
+}
+
+.categoryCheckBox input[type='checkbox']:checked + label > span{
+  text-decoration: none;
+}
+
+
+
+.categoryCheckBox label{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px 0 5px 5px;
+}
+
+
+
+.categoryCheckBox span{
+  margin-left: 5px;
+}
+
+.category{
+  font-size: .6rem;
+  padding: 3px 6px;
+  border-radius: 12px;
+}
+.fruit{
+  background-color: yellow;
+}
+.vegetable{
+  background-color: green;
+}
+.canned_goods{
+  background-color: darkgray;
+}
+.meat{
+  background-color: darkred;
+}
+.seafood {
+  background-color: orange;
+}
+.deli{
+  background-color: wheat;
+}
+.bakery{
+  background-color: palevioletred;
+}
+.frozen_foods{
+  background-color: goldenrod;
+}
+.personal_care{
+  background-color: cadetblue;
+}
+.pet{
+  background-color: rosybrown;
 }
 
