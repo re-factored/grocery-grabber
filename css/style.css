@@ -156,6 +156,10 @@ footer a {
   margin: 0 auto;
 }
 
+.p-1{
+  padding: 1rem;
+}
+
 .pt-2{
   padding-top: 2rem;
 }
@@ -191,13 +195,8 @@ input[type='checkbox']{
 
 .categoryCheckBox input[type='checkbox']:checked + label{
   text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
 }
-
-.categoryCheckBox input[type='checkbox']:checked + label > span{
-  text-decoration: none;
-}
-
-
 
 .categoryCheckBox label{
   display: flex;
@@ -214,18 +213,21 @@ input[type='checkbox']{
   font-size: .6rem;
   padding: 3px 6px;
   border-radius: 12px;
+  font-weight: 500;
 }
 .fruit{
   background-color: yellow;
 }
 .vegetable{
   background-color: green;
+  color: #fff;
 }
 .canned_goods{
   background-color: darkgray;
 }
 .meat{
   background-color: darkred;
+  color: #fff;
 }
 .seafood {
   background-color: orange;

@@ -34,11 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // constructor function for the state object
-    const Item = function (category, itemName, quantity, ucm) {
+    const Item = function (category, itemName, quantity, ucm, isAdded = false) {
         this.category = category;
         this.itemName = itemName;
         this.quantity = quantity;
         this.ucm = ucm;
+        this.isAdded = isAdded;
     }
 
     //Save items to local storage
