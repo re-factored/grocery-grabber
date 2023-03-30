@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     cancelButton.addEventListener("click", () => {
-        window.history.back();
+        window.location.href= './grocery-list.html';
     });
 
 });

@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <img class="gitHub-Badge" src="https://img.shields.io/badge/GitHub-100000?logo=github&logoColor=white" alt="github badge">
           </a>
           <a href="https://github.com/${data.login}?tab=followers">
-            <img class="gitHubFollowers" alt="GitHub followers" src="https://img.shields.io/github/followers/${data.login}?">
+            <img class="gitHubFollowers" alt="GitHub followers" src="https://img.shields.io/github/followers/${data.login}?label=Followers">
           </a>
           <a href="https://github.com/${data.login}?tab=repositories">
             <img class="pubRepoCount" src="https://img.shields.io/static/v1?label=Public%20Repos&message=${data.public_repos}&color=#e5e5e5">
