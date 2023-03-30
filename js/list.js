@@ -15,8 +15,6 @@ function displayItems() {
   itemList.innerHTML = '';
   const storedItems = JSON.parse(getFromLocalStorage());
 
-  state.sort((a, b) => (a.category > b.category) ? 1 : -1);
-
   // Sort the state array by category
   storedItems.sort((a, b) => (a.category > b.category) ? 1 : -1);
 
