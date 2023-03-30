@@ -52,14 +52,6 @@ function displayItems() {
 
 displayItems();
 
-function removeTest(itemName) {
-  console.log("name --- ", itemName);
-  let storedItems = JSON.parse(localStorage.getItem("itemsList"));
-  storedItems = storedItems.filter((item) => item.itemName !== itemName);
-  localStorage.setItem("itemsList", JSON.stringify(storedItems));
-  renderShoppingList();
-}
-
 const clearButton = document.getElementById("clear_list_button");
 
 clearButton.addEventListener("click", (event) => {

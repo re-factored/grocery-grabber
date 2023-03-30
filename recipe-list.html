@@ -79,34 +79,6 @@
       </tbody>
     </table>
 
-    <!-- <h2>Add Ingredient to Shopping List:</h2>
-  <div class="ingredient-input">
-    <select name="shopping-category" id="shopping-category" aria-label="Category">
-      <option value="" selected disabled>Category</option>
-      <option value="Fruit">Fruit</option>
-      <option value="Vegetable">Vegetable</option>
-      <option value="Canned Goods">Canned Goods</option>
-      <option value="Meat">Meat</option>
-      <option value="Seafood">Seafood</option>
-      <option value="Deli">Deli</option>
-      <option value="Bakery">Bakery</option>
-      <option value="Frozen Foods">Frozen Foods</option>
-      <option value="Personal Care">Personal Care</option>
-      <option value="Pet">Pet</option>
-    </select>
-    <input type="text" id="shopping-ingredient-input" placeholder="Ingredient">
-    <input type="number" id="shopping-quantity-input" placeholder="Quantity">
-    <select id="shopping-unit-input">
-      <option value="g">g</option>
-      <option value="ml">ml</option>
-      <option value="tsp">tsp</option>
-      <option value="tbsp">tbsp</option>
-      <option value="cup">cup</option>
-      <option value="pcs">pcs</option>
-    </select>
-    <button type="button" id="add-shopping-ingredient" onclick="addShoppingIngredient">Add Ingredient</button>
-  </div> -->
-
     <h2>Shopping List</h2>
     <table id="selected-recipe-ingredients">
       <thead>
@@ -148,11 +120,11 @@
       const ingredient = capitalize(document.getElementById("ingredient-input").value);
       const quantity = document.getElementById("quantity-input").value;
       const unit = document.getElementById("unit-input").value;
-      
+
       return (category === "" || ingredient === "" || quantity === "" || unit === "");
-      
+
     }
-    
+
     function addIngredient() {
       if (checkFields()) {
         return;
@@ -160,18 +132,18 @@
       const ingredientTable = document.getElementById("ingredient-table").getElementsByTagName("tbody")[0];
       let currentPortionSize = document.getElementById('current-portion-size').value;
       let desiredPortionSize = document.getElementById('desired-portion-size').value;
-      
+
       const category = capitalize(document.getElementById("category").value);
       const ingredient = capitalize(document.getElementById("ingredient-input").value);
       let quantity = document.getElementById("quantity-input").value;
       const unit = document.getElementById("unit-input").value;
-      
+
       let newPortion = desiredPortionSize / currentPortionSize;
       if (currentPortionSize !== desiredPortionSize) {
-  
-          // let ingredientPortioned = quantity * newPortion;
-          quantity = quantity * newPortion;
-      } else{
+
+        // let ingredientPortioned = quantity * newPortion;
+        quantity = quantity * newPortion;
+      } else {
         quantity = quantity * 1;
       }
 
