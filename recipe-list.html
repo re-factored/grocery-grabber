@@ -17,7 +17,7 @@
   </header>
 
   <main>
-    <form id="recipe-form" method="POST" onsubmit="submitRecipe(event)">
+    <form id="recipe-form" method="POST" onsubmit="handleFormSubmit(event)">
       <label for="recipe-name">Recipe Name:</label>
       <input type="text" id="recipe-name" name="recipe-name" required>
       <input type="number" id="current-portion-size" placeholder="Portions the recipe makes">
