@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dropdown for measurements
     function populateMeasurement() {
-        let measurementOptions = ["ml", "tsp", "tbsp", "cup", "pcs"];
+        let measurementOptions = ["g", "ml", "tsp", "tbsp", "cup", "pcs"];
         const measurementEl = document.getElementById("measurement");
         for (let i = 0; i < measurementOptions.length; i++) {
             let optionElMeasurement = document.createElement("option");
