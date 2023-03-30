@@ -10,7 +10,7 @@ const Item = function (category, itemName, quantity, ucm, isAdded = false) {
 
 function handleFormSubmit(event) {
   event.preventDefault();
-  console.log("form submitting");
+  submitRecipe(event);
 }
 
 function checkFields() {
@@ -40,7 +40,7 @@ function addIngredient() {
   let newPortion = desiredPortionSize / currentPortionSize;
   if (currentPortionSize !== desiredPortionSize) {
 
-    // let ingredientPortioned = quantity * newPortion;
+    
     quantity = quantity * newPortion;
   } else {
     quantity = quantity * 1;
@@ -76,7 +76,6 @@ function removeIngredient(button) {
 }
 
 function removeTest(itemName) {
-  console.log("name --- ", itemName);
   let storedItems = JSON.parse(localStorage.getItem("itemsList"));
   storedItems = storedItems.filter((item) => item.itemName !== itemName);
   localStorage.setItem("itemsList", JSON.stringify(storedItems));
@@ -98,7 +97,7 @@ function renderRecipeList() {
 renderRecipeList();
 
 function renderShoppingList() {
-  // pull itemsList / parse/
+  
   const storedItems = JSON.parse(localStorage.getItem("itemsList")) || [];
 
 
@@ -111,7 +110,7 @@ function renderShoppingList() {
     const ingredientCell = newRow.insertCell(1);
     const quantityCell = newRow.insertCell(2);
     const unitCell = newRow.insertCell(3);
-    const removeCell = newRow.insertCell(4); // Add this line
+    const removeCell = newRow.insertCell(4); 
 
     categoryCell.textContent = ingredient.category;
     ingredientCell.textContent = ingredient.itemName;
@@ -143,15 +142,11 @@ function addRecipe(button) {
   const selectedRecipe = recipes.find(recipe => recipe.name === recipeName);
   const ingredients = selectedRecipe.ingredients;
 
-  console.log("ingreeeed", ingredients);
-
   const storedItems = JSON.parse(localStorage.getItem("itemsList")) || [];
 
   ingredients.forEach(ingredient => {
     let newIngredient = new Item(ingredient.category, ingredient.ingredientName, ingredient.quantity, ingredient.unit);
 
-    console.log("new-----", newIngredient);
-    // update items array
     storedItems.push(newIngredient);
   });
 
@@ -212,35 +207,3 @@ function saveToLocalStorage(itemsArray) {
   localStorage.setItem("itemsList", JSON.stringify(itemsArray));
 }
 
-function addShoppingIngredient() {
-  const storedItems = JSON.parse(getFromLocalStorage());
-  console.log(storedItems);
-  const shoppingIngredientTable = document.getElementById("selected-recipe-ingredients").getElementsByTagName("tbody")[0];
-
-  const category = capitalize(document.getElementById("shopping-category").value);
-  const itemName = capitalize(document.getElementById("shopping-ingredient-input").value);
-  const quantity = document.getElementById("shopping-quantity-input").value;
-  const ucm = document.getElementById("shopping-unit-input").value;
-
-  let newIngredient = new Item(category, itemName, quantity, ucm);
-  storedItems.push(newIngredient);
-  saveToLocalStorage(storedItems);
-
-  const newRow = shoppingIngredientTable.insertRow();
-  const categoryCell = newRow.insertCell(0);
-  const ingredientCell = newRow.insertCell(1);
-  const quantityCell = newRow.insertCell(2);
-  const unitCell = newRow.insertCell(3);
-  const removeCell = newRow.insertCell(4);
-
-  categoryCell.textContent = category;
-  ingredientCell.textContent = itemName;
-  quantityCell.textContent = quantity;
-  unitCell.textContent = ucm;
-  removeCell.innerHTML = '<button onclick="removeIngredient(this)"><i class="fa-solid fa-xmark" style="color: #D60A0A;"></i></button>';
-
-  document.getElementById("shopping-category").selectedIndex = 0;
-  document.getElementById("shopping-ingredient-input").value = "";
-  document.getElementById("shopping-quantity-input").value = "";
-  document.getElementById("shopping-unit-input").value = "g";
-}
