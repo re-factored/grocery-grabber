@@ -36,6 +36,15 @@ function displayItems() {
           <div><i class="fa-solid fa-xmark" style="color: #d60a0a;"></i></div>
         `;
 
+        let checkbox = divEl.querySelector(`#item${id}`);
+        checkbox.addEventListener('change', function(event){
+          let isChecked = event.target.checked;
+          item.isAdded = isChecked;
+          storedItems.sort((a, b) => (a.category > b.category) ? 1 : -1);
+          localStorage.setItem("itemsList", JSON.stringify(storedItems));
+          displayItems();
+        });
+
     // itemList.appendChild(li);
     itemList.appendChild(divEl);
   });
