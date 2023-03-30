@@ -7,18 +7,16 @@
   <title>Recipe Form</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="https://kit.fontawesome.com/7f42bb4d5d.js" crossorigin="anonymous"></script>
-  <style>
 
-  </style>
 </head>
 
 <body>
   <header class="flex flex-column items-center w-full">
-    <img src="./assets/gg-transparent-logo.png" alt="">
+<a href="index.html">    <img src="./assets/gg-transparent-logo.png" alt="grocery Grabber logo"></a>
     <h1>Add a Recipe</h1>
   </header>
 
-
+<main>
   <form id="recipe-form" method="POST" onsubmit="submitRecipe(event)">
     <label for="recipe-name">Recipe Name:</label>
     <input type="text" id="recipe-name" name="recipe-name" required>
@@ -120,15 +118,12 @@
     </thead>
     <tbody>
     </tbody>
-
-    <footer class=" w-full">
-      <nav class="flex flex-row justify-around items-center">
-        <a href="recipe-list.html" class=""><i class="fa-solid fa-book-open fa-xl" style="color: #c0aa5d;"></i></a>
-        <a href="./splash.html" class=""><i class="fa-solid fa-house-chimney fa-xl" style="color: #c0aa5d;"></i></a>
-        <a href="" class=""><i class="fa-solid fa-list-check fa-xl" style="color: #c0aa5d;"></i></a>
-      </nav>
-
-    </footer>
+  </main>
+    <nav class="flex flex-row justify-around items-center">
+      <a href="./grocery-list.html" class=""><i class="fa-solid fa-list-check fa-xl" style="color: #c0aa5d;"></i></a>
+      <a href="./index.html" class=""><i class="fa-solid fa-house-chimney fa-xl" style="color: #c0aa5d;"></i></a>
+      <a href="./recipe-list.html" class=""><i class="fa-solid fa-book-open fa-xl" style="color: #c0aa5d;"></i></a>
+    </nav>
 
     <script>
 
