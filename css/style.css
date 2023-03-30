@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+
 *{
   /* border: 1px solid gold; */
   font-family: 'Poppins', sans-serif;}
@@ -17,35 +18,39 @@ body{
   justify-content: space-between;
   align-items: stretch;
   padding: 3rem;
-  overflow: hidden;
+  bottom: 50px;
+  /* overflow: hidden; */
 }
 
 main{
-  overflow-y: auto;
+  /* overflow-y: auto; */
   padding: 10px;
 }
 
   
-  /* Set the direction links to be spaced evenly and centered */
-  #directions {
-    display: flex;
-    flex-direction: column;
-    align-items: st;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 10rem;
-    text-align: center;
-  }
-  
-  /* Set the margin for the direction links */
-  #directions a {
-    margin: 5px;
-    padding: 30px 60px;
-    /* max-width: 94px; */
-  }
+/* Set the direction links to be spaced evenly and centered */
+#directions {
+  display: flex;
+  flex-direction: column;
+  align-items: st;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10rem;
+  text-align: center;
+}
+
+/* Set the margin for the direction links */
+#directions a {
+  margin: 5px;
+  padding: 30px 60px;
+  /* max-width: 94px; */
+}
 
 .container{
-  background-color: #d9d8d8;
+  background: rgba(255, 255, 255, 0.37);
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.151);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.219);
   flex-grow: 1;
   margin: 1rem 0;
 }
@@ -63,12 +68,16 @@ footer p {
   letter-spacing: 1px;
 }
 
+footer p{
+  padding-top: 19px;
+}
+
 header .a {
   max-width: 94px;
   text-align: center;
 }
 
-header .img{
+header img{
   width: 12rem;
   height: auto;
   margin-bottom: 0;
@@ -112,7 +121,7 @@ header .button{
   background-color: #c0aa5d;
   font-weight: 800;
   text-transform: uppercase;
-  border-radius: 5px;;
+  border-radius: 5px;
   transition: all 350ms;
 }
 
@@ -123,9 +132,13 @@ header .button{
 #recipe-list {
   background-color: #fff;
 }
+
 footer{
+  position: fixed;
   bottom: 0;
-  padding: 2rem 0;
+  left: 0;
+  padding-top: 1rem;
+  background-color: #29315a;
 }
 
 footer a {
