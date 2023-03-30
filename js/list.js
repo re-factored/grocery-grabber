@@ -42,7 +42,7 @@ function displayItems() {
             <input type="checkbox" id="item${id}" ${item.isAdded ? 'checked' : ''}>
             <label for="item${id}" ${item.isAdded ? 'style="text-decoration: line-through;"' : ''}>${item.itemName} - ${item.quantity} ${item.ucm} <span class="category ${cat}">${item.category} </span></label>
           </div>
-          <button class="deleteButton"><i class="fa-solid fa-xmark" style="color: #d60a0a;" onClick="removeTest('${item.itemName}')"></i></button>
+          <button class="deleteButton"><i class="fa-solid fa-xmark fa-lg" onClick="removeTest('${item.itemName}')"></i></button>
         `;
 
     let checkbox = divEl.querySelector(`#item${id}`);

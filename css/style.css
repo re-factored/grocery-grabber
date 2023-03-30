@@ -2,10 +2,12 @@
 
 *{
   /* border: 1px solid gold; */
-  font-family: 'Poppins', sans-serif;}
+  /* font-family: 'Poppins', sans-serif; */
+}
 
 html{
   font-size: 18px;
+  font-family: 'Poppins', sans-serif;
 }
 
 body{
@@ -39,11 +41,21 @@ main{
   text-align: center;
 }
 
+#directions .indexButton{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#directions .indexButton p{
+  margin-top: 25px;
+}
+
 /* Set the margin for the direction links */
 #directions a {
-  margin: 5px;
+  margin: 20px 5px;
   padding: 30px 60px;
-  /* max-width: 94px; */
 }
 
 .container{
@@ -84,7 +96,7 @@ select{
 
 
 .form-container .button-group{
-  margin: 25px;
+  margin: 25px 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -95,7 +107,53 @@ select{
   margin: 0 10px;
 }
 
+.groceryToolTip{
+content:"Grocery List"
+}
+.homeToolTip{
+  content:"Home"
+}
+.recipeToolTip{
+  content:"Recipe List"
+}
+.groceryToolTip,
+.homeToolTip,
+.recipeToolTip{
+  position: relative;
+  display: inline-block;
+}
 
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #c0aa5d;
+  color: #000;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 999;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltiptext::after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #c0aa5d transparent transparent transparent;
+}
+
+.groceryToolTip:hover .tooltiptext,
+.homeToolTip:hover .tooltiptext,
+.recipeToolTip:hover .tooltiptext {
+  visibility: visible;
+}
 
 
 
@@ -140,7 +198,7 @@ header .button{
 
 .link,
 .button {
-  color: #000;
+  color: #1e2546;
   text-decoration: none;
   padding: 10px 20px;
   background-color: #c0aa5d;
@@ -153,10 +211,16 @@ header .button{
 
 .deleteButton{
   border-radius: 5px;
-  background-color: rgba(255,255,255,0.5);
+  padding: 3px;
+  background-color: rgba(255,255,255,0);
   border: none;
   cursor: pointer;
 
+}
+
+.deleteButton i{
+  color: darkred;
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.151);
 }
 
 .link:hover,
