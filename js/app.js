@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     populateMeasurement();
 
-    let state = getFromLocalStorage() ? JSON.parse(getFromLocalStorage()) : [];
+    let state = getFromLocalStorage("itemsList") ? JSON.parse(getFromLocalStorage("itemsList")) : [];
 
     function getFromLocalStorage() {
         return localStorage.getItem("itemsList");
@@ -56,8 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const newItem = new Item(category, itemName, quantity, ucm);
 
-        state.sort((a, b) => (a.category > b.category) ? 1 : -1);
-
         localStorage.setItem("itemsList", JSON.stringify(state));
         state.push(newItem);
     }
@@ -71,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelButton = document.getElementById('cancel-button');
     const clearButton = document.getElementById("clear-recipes");
     const recipeList = document.getElementById("recipe-list");
-   
+
 
     addItemButton.addEventListener("click", (event) => {
         event.preventDefault()
@@ -89,30 +87,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const groceryForm = document.getElementById('grocery-form');
 
-groceryForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const newItem = new Item(categoryInput.value, itemNameInput.value, quantityInput.value, ucmInput.value);
-  state.push(newItem);
+    groceryForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const newItem = new Item(categoryInput.value, itemNameInput.value, quantityInput.value, ucmInput.value);
+        state.push(newItem);
 
-  categoryInput.value = "";
-  itemNameInput.value = "";
-  quantityInput.value = "";
-  ucmInput.value = "";
+        categoryInput.value = "";
+        itemNameInput.value = "";
+        quantityInput.value = "";
+        ucmInput.value = "";
 
-  saveToLocalStorage();
+        saveToLocalStorage();
 
-});
+    });
 
-
-cancelButton.addEventListener("click", () => {
-  window.history.back();
-});
-clearButton.addEventListener("click", function () {
-    localStorage.removeItem("itemsList");
-    while (recipeList.firstChild) {
-      recipeList.removeChild(recipeList.firstChild);
-    }
-});
-
+    cancelButton.addEventListener("click", () => {
+        window.history.back();
+    });
 
 });
