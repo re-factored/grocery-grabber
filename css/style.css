@@ -247,4 +247,84 @@ input[type='checkbox']{
 .pet{
   background-color: rosybrown;
 }
+/*About Us*/
+
+#aboutUs h1{
+  /* font-size: 2rem; */
+  font-size: 3vw;
+  border: 2px solid #c0aa5d;
+  color: #c0aa5d;
+  border-radius: 5px;
+  font-weight: 600;;
+  padding: 1.2rem 2rem
+  
+
+}
+
+.profileCards{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.teamCard{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.teamCard *{
+  background: none;
+}
+
+.teamCard a{
+  /* padding: 2px; */
+  margin: 0;
+}
+
+.profileInfo{
+  padding: 0 10px 10px 10px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.37);
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.151);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.219);
+
+ }
+
+.teamCard .profilePic{
+  position: relative;
+  top: 48px;
+  margin: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  width: 150px;
+  height: 150px;  
+}
+
+.profileName{
+  margin-top: 44px;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.teamCard .bio{
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.teamCard .badges {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.teamCard .badges img{
+  height: 20px;
+  width: auto;
+  margin: 0;
+}
 
