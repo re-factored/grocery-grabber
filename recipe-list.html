@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="https://kit.fontawesome.com/7f42bb4d5d.js" crossorigin="anonymous"></script>
   <style>
- 
+
   </style>
 </head>
 
@@ -17,7 +17,7 @@
     <img src="./assets/gg-transparent-logo.png" alt="">
     <h1>Add a Recipe</h1>
   </header>
-  
+
 
   <form id="recipe-form" method="POST" onsubmit="submitRecipe(event)">
     <label for="recipe-name">Recipe Name:</label>
@@ -49,9 +49,9 @@
         <option value="pcs">pcs</option>
       </select>
     </div>
-    
-  
-    
+
+
+
     <button type="button" id="add-ingredient">Add Ingredient</button>
     <table id="ingredient-table">
       <thead>
@@ -66,7 +66,7 @@
       <tbody>
       </tbody>
     </table>
-    <input type="submit" value="Submit Recipe">
+    <input type="submit" value="Submit Recipe"> <-- make button -->
   </form>
 
   <table id="recipe-name-table">
@@ -80,32 +80,32 @@
   </table>
 
   <h2>Add Ingredient to Shopping List:</h2>
-<div class="ingredient-input">
-  <select name="shopping-category" id="shopping-category" aria-label="Category">
-    <option value="" selected disabled>Category</option>
-    <option value="Fruit">Fruit</option>
-    <option value="Vegetable">Vegetable</option>
-    <option value="Canned Goods">Canned Goods</option>
-    <option value="Meat">Meat</option>
-    <option value="Seafood">Seafood</option>
-    <option value="Deli">Deli</option>
-    <option value="Bakery">Bakery</option>
-    <option value="Frozen Foods">Frozen Foods</option>
-    <option value="Personal Care">Personal Care</option>
-    <option value="Pet">Pet</option>
-  </select>
-  <input type="text" id="shopping-ingredient-input" placeholder="Ingredient">
-  <input type="number" id="shopping-quantity-input" placeholder="Quantity">
-  <select id="shopping-unit-input">
-    <option value="g">g</option>
-    <option value="ml">ml</option>
-    <option value="tsp">tsp</option>
-    <option value="tbsp">tbsp</option>
-    <option value="cup">cup</option>
-    <option value="pcs">pcs</option>
-  </select>
-  <button type="button" id="add-shopping-ingredient">Add Ingredient</button>
-</div>
+  <div class="ingredient-input">
+    <select name="shopping-category" id="shopping-category" aria-label="Category">
+      <option value="" selected disabled>Category</option>
+      <option value="Fruit">Fruit</option>
+      <option value="Vegetable">Vegetable</option>
+      <option value="Canned Goods">Canned Goods</option>
+      <option value="Meat">Meat</option>
+      <option value="Seafood">Seafood</option>
+      <option value="Deli">Deli</option>
+      <option value="Bakery">Bakery</option>
+      <option value="Frozen Foods">Frozen Foods</option>
+      <option value="Personal Care">Personal Care</option>
+      <option value="Pet">Pet</option>
+    </select>
+    <input type="text" id="shopping-ingredient-input" placeholder="Ingredient">
+    <input type="number" id="shopping-quantity-input" placeholder="Quantity">
+    <select id="shopping-unit-input">
+      <option value="g">g</option>
+      <option value="ml">ml</option>
+      <option value="tsp">tsp</option>
+      <option value="tbsp">tbsp</option>
+      <option value="cup">cup</option>
+      <option value="pcs">pcs</option>
+    </select>
+    <button type="button" id="add-shopping-ingredient">Add Ingredient</button>
+  </div>
 
   <h2>Shopping List</h2>
   <table id="selected-recipe-ingredients">
@@ -121,7 +121,7 @@
     <tbody>
     </tbody>
 
-  <!-- <footer class=" w-full">
+    <!-- <footer class=" w-full">
     <nav class="flex flex-row justify-around items-center">
       <a href="recipe-list.html" class=""><i class="fa-solid fa-book-open fa-xl" style="color: #c0aa5d;"></i></a>
       <a href="./splash.html" class=""><i class="fa-solid fa-house-chimney fa-xl" style="color: #c0aa5d;"></i></a>
@@ -129,164 +129,164 @@
     </nav>
     
 </footer> -->
-  
-  <script>
 
-// Capitalize first letter
-function capitalize(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+    <script>
 
-function removeIngredient(button) {
-  const row = button.parentNode.parentNode;
-  row.parentNode.removeChild(row);
-}
+      // Capitalize first letter
+      function capitalize(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
 
-function saveRecipeToLocalStorage(recipe) {
-  const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
-  recipes.push(recipe);
-  localStorage.setItem("recipes", JSON.stringify(recipes));
-}
+      function removeIngredient(button) {
+        const row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+      }
 
-function addRecipeNameToTable(recipeName) {
-  const recipeNameTable = document.getElementById("recipe-name-table").getElementsByTagName("tbody")[0];
-  const newRow = recipeNameTable.insertRow();
-  const nameCell = newRow.insertCell(0);
-  const addButtonCell = newRow.insertCell(1);
-  const removeButtonCell = newRow.insertCell(2);
+      function saveRecipeToLocalStorage(recipe) {
+        const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+        recipes.push(recipe);
+        localStorage.setItem("recipes", JSON.stringify(recipes));
+      }
 
-  nameCell.textContent = recipeName;
-  addButtonCell.innerHTML = '<button onclick="addRecipe(this)">Add</button>';
-  removeButtonCell.innerHTML = '<button onclick="removeRecipe(this)">Remove</button>';
-}
+      function addRecipeNameToTable(recipeName) {
+        const recipeNameTable = document.getElementById("recipe-name-table").getElementsByTagName("tbody")[0];
+        const newRow = recipeNameTable.insertRow();
+        const nameCell = newRow.insertCell(0);
+        const addButtonCell = newRow.insertCell(1);
+        const removeButtonCell = newRow.insertCell(2);
 
-function addRecipe(button) {
-  const row = button.parentNode.parentNode;
-  const recipeName = row.cells[0].textContent;
+        nameCell.textContent = recipeName;
+        addButtonCell.innerHTML = '<button onclick="addRecipe(this)">Add</button>';
+        removeButtonCell.innerHTML = '<button onclick="removeRecipe(this)">Remove</button>';
+      }
 
-  const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
-  const selectedRecipe = recipes.find(recipe => recipe.name === recipeName);
+      function addRecipe(button) {
+        const row = button.parentNode.parentNode;
+        const recipeName = row.cells[0].textContent;
 
-  if (selectedRecipe) {
-    const ingredientTable = document.getElementById("selected-recipe-ingredients").getElementsByTagName("tbody")[0];
+        const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+        const selectedRecipe = recipes.find(recipe => recipe.name === recipeName);
 
-    selectedRecipe.ingredients.forEach(ingredient => {
-      const newRow = ingredientTable.insertRow();
-      const categoryCell = newRow.insertCell(0);
-      const ingredientCell = newRow.insertCell(1);
-      const quantityCell = newRow.insertCell(2);
-      const unitCell = newRow.insertCell(3);
-      const removeCell = newRow.insertCell(4); // Add this line
+        if (selectedRecipe) {
+          const ingredientTable = document.getElementById("selected-recipe-ingredients").getElementsByTagName("tbody")[0];
 
-      categoryCell.textContent = ingredient.category;
-      ingredientCell.textContent = ingredient.ingredientName;
-      quantityCell.textContent = ingredient.quantity;
-      unitCell.textContent = ingredient.unit;
-      removeCell.innerHTML = '<button onclick="removeIngredient(this)"><i class="fa-solid fa-xmark" style="color: #D60A0A;"></i></button>'; // Add this line
-    });
-  }
-}
+          selectedRecipe.ingredients.forEach(ingredient => {
+            const newRow = ingredientTable.insertRow();
+            const categoryCell = newRow.insertCell(0);
+            const ingredientCell = newRow.insertCell(1);
+            const quantityCell = newRow.insertCell(2);
+            const unitCell = newRow.insertCell(3);
+            const removeCell = newRow.insertCell(4); // Add this line
 
-function removeRecipe(button) {
-  const row = button.parentNode.parentNode;
-  const recipeName = row.cells[0].textContent;
-  
-  const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
-  const updatedRecipes = recipes.filter(recipe => recipe.name !== recipeName);
-  localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+            categoryCell.textContent = ingredient.category;
+            ingredientCell.textContent = ingredient.ingredientName;
+            quantityCell.textContent = ingredient.quantity;
+            unitCell.textContent = ingredient.unit;
+            removeCell.innerHTML = '<button onclick="removeIngredient(this)"><i class="fa-solid fa-xmark" style="color: #D60A0A;"></i></button>'; // Add this line
+          });
+        }
+      }
 
-  
-  row.parentNode.removeChild(row);
-}
+      function removeRecipe(button) {
+        const row = button.parentNode.parentNode;
+        const recipeName = row.cells[0].textContent;
 
-document.getElementById("add-ingredient").addEventListener("click", function (event) {
-  event.preventDefault();
-  const ingredientTable = document.getElementById("ingredient-table").getElementsByTagName("tbody")[0];
-
-  const category = capitalize(document.getElementById("category").value);
-  const ingredient = capitalize(document.getElementById("ingredient-input").value);
-  const quantity = document.getElementById("quantity-input").value;
-  const unit = document.getElementById("unit-input").value;
-
-  const newRow = ingredientTable.insertRow();
-  const categoryCell = newRow.insertCell(0);
-  const ingredientCell = newRow.insertCell(1);
-  const quantityCell = newRow.insertCell(2);
-  const unitCell = newRow.insertCell(3);
-  const removeCell = newRow.insertCell(4);
-
-  categoryCell.textContent = category;
-  ingredientCell.textContent = ingredient;
-  quantityCell.textContent = quantity;
-  unitCell.textContent = unit;
-  removeCell.innerHTML = '<button onclick="removeIngredient(this)"><i class="fa-solid fa-xmark" style="color: #D60A0A;"></i></button>';
-
-  document.getElementById("category").selectedIndex = 0;
-  document.getElementById("ingredient-input").value = "";
-  document.getElementById("quantity-input").value = "";
-  document.getElementById("unit-input").value = "g";
-});
-
-function submitRecipe(event) {
-  event.preventDefault(); // Prevent the form from submitting
-
-  const recipeName = document.getElementById("recipe-name").value;
-
-  const ingredients = Array.from(document.getElementById("ingredient-table").getElementsByTagName("tbody")[0].rows).map(row => {
-    return {
-      category: row.cells[0].textContent,
-      ingredientName: row.cells[1].textContent,
-      quantity: row.cells[2].textContent,
-      unit: row.cells[3].textContent,
-    };
-  });
-
-  const recipe = {
-    name: recipeName,
-    ingredients: ingredients,
-  };
-
-  saveRecipeToLocalStorage(recipe);
-  addRecipeNameToTable(recipeName);
-
-  document.getElementById("recipe-name").value = "";
-  document.getElementById("ingredient-table").getElementsByTagName("tbody")[0].innerHTML = "";
-}
+        const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+        const updatedRecipes = recipes.filter(recipe => recipe.name !== recipeName);
+        localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
 
 
-function addShoppingIngredient() {
-  const shoppingIngredientTable = document.getElementById("selected-recipe-ingredients").getElementsByTagName("tbody")[0];
+        row.parentNode.removeChild(row);
+      }
 
-  const category = capitalize(document.getElementById("shopping-category").value);
-  const ingredient = capitalize(document.getElementById("shopping-ingredient-input").value);
-  const quantity = document.getElementById("shopping-quantity-input").value;
-  const unit = document.getElementById("shopping-unit-input").value;
+      document.getElementById("add-ingredient").addEventListener("click", function (event) {
+        event.preventDefault();
+        const ingredientTable = document.getElementById("ingredient-table").getElementsByTagName("tbody")[0];
 
-  const newRow = shoppingIngredientTable.insertRow();
-  const categoryCell = newRow.insertCell(0);
-  const ingredientCell = newRow.insertCell(1);
-  const quantityCell = newRow.insertCell(2);
-  const unitCell = newRow.insertCell(3);
-  const removeCell = newRow.insertCell(4);
+        const category = capitalize(document.getElementById("category").value);
+        const ingredient = capitalize(document.getElementById("ingredient-input").value);
+        const quantity = document.getElementById("quantity-input").value;
+        const unit = document.getElementById("unit-input").value;
 
-  categoryCell.textContent = category;
-  ingredientCell.textContent = ingredient;
-  quantityCell.textContent = quantity;
-  unitCell.textContent = unit;
-  removeCell.innerHTML = '<button onclick="removeIngredient(this)"><i class="fa-solid fa-xmark" style="color: #D60A0A;"></i></button>';
+        const newRow = ingredientTable.insertRow();
+        const categoryCell = newRow.insertCell(0);
+        const ingredientCell = newRow.insertCell(1);
+        const quantityCell = newRow.insertCell(2);
+        const unitCell = newRow.insertCell(3);
+        const removeCell = newRow.insertCell(4);
 
-  document.getElementById("shopping-category").selectedIndex = 0;
-  document.getElementById("shopping-ingredient-input").value = "";
-  document.getElementById("shopping-quantity-input").value = "";
-  document.getElementById("shopping-unit-input").value = "g";
-}
+        categoryCell.textContent = category;
+        ingredientCell.textContent = ingredient;
+        quantityCell.textContent = quantity;
+        unitCell.textContent = unit;
+        removeCell.innerHTML = '<button onclick="removeIngredient(this)"><i class="fa-solid fa-xmark" style="color: #D60A0A;"></i></button>';
 
-document.getElementById("add-shopping-ingredient").addEventListener("click", function (event) {
-  event.preventDefault();
-  addShoppingIngredient();
-});
+        document.getElementById("category").selectedIndex = 0;
+        document.getElementById("ingredient-input").value = "";
+        document.getElementById("quantity-input").value = "";
+        document.getElementById("unit-input").value = "g";
+      });
 
-  </script>
+      function submitRecipe(event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        const recipeName = document.getElementById("recipe-name").value;
+
+        const ingredients = Array.from(document.getElementById("ingredient-table").getElementsByTagName("tbody")[0].rows).map(row => {
+          return {
+            category: row.cells[0].textContent,
+            ingredientName: row.cells[1].textContent,
+            quantity: row.cells[2].textContent,
+            unit: row.cells[3].textContent,
+          };
+        });
+
+        const recipe = {
+          name: recipeName,
+          ingredients: ingredients,
+        };
+
+        saveRecipeToLocalStorage(recipe);
+        addRecipeNameToTable(recipeName);
+
+        document.getElementById("recipe-name").value = "";
+        document.getElementById("ingredient-table").getElementsByTagName("tbody")[0].innerHTML = "";
+      }
+
+
+      function addShoppingIngredient() {
+        const shoppingIngredientTable = document.getElementById("selected-recipe-ingredients").getElementsByTagName("tbody")[0];
+
+        const category = capitalize(document.getElementById("shopping-category").value);
+        const ingredient = capitalize(document.getElementById("shopping-ingredient-input").value);
+        const quantity = document.getElementById("shopping-quantity-input").value;
+        const unit = document.getElementById("shopping-unit-input").value;
+
+        const newRow = shoppingIngredientTable.insertRow();
+        const categoryCell = newRow.insertCell(0);
+        const ingredientCell = newRow.insertCell(1);
+        const quantityCell = newRow.insertCell(2);
+        const unitCell = newRow.insertCell(3);
+        const removeCell = newRow.insertCell(4);
+
+        categoryCell.textContent = category;
+        ingredientCell.textContent = ingredient;
+        quantityCell.textContent = quantity;
+        unitCell.textContent = unit;
+        removeCell.innerHTML = '<button onclick="removeIngredient(this)"><i class="fa-solid fa-xmark" style="color: #D60A0A;"></i></button>';
+
+        document.getElementById("shopping-category").selectedIndex = 0;
+        document.getElementById("shopping-ingredient-input").value = "";
+        document.getElementById("shopping-quantity-input").value = "";
+        document.getElementById("shopping-unit-input").value = "g";
+      }
+
+      document.getElementById("add-shopping-ingredient").addEventListener("click", function (event) {
+        event.preventDefault();
+        addShoppingIngredient();
+      });
+
+    </script>
 </body>
 
 </html>

@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     populateMeasurement();
 
-    let state = getFromLocalStorage() ? JSON.parse(getFromLocalStorage()) : [];
+    let state = getFromLocalStorage("itemsList") ? JSON.parse(getFromLocalStorage("itemsList")) : [];
 
     function getFromLocalStorage() {
         return localStorage.getItem("itemsList");
@@ -55,8 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const ucm = document.getElementById("measurement").value;
 
         const newItem = new Item(category, itemName, quantity, ucm);
-
-        state.sort((a, b) => (a.category > b.category) ? 1 : -1);
 
         localStorage.setItem("itemsList", JSON.stringify(state));
         state.push(newItem);
@@ -106,12 +104,5 @@ document.addEventListener('DOMContentLoaded', () => {
     cancelButton.addEventListener("click", () => {
         window.history.back();
     });
-
-    // clearButton.addEventListener("click", function () {
-    //     localStorage.removeItem("itemsList");
-    //     while (recipeList.firstChild) {
-    //       recipeList.removeChild(recipeList.firstChild);
-    //     }
-    // });
 
 });

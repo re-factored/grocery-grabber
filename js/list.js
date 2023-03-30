@@ -15,6 +15,8 @@ function displayItems() {
   itemList.innerHTML = '';
   const storedItems = JSON.parse(getFromLocalStorage());
 
+  state.sort((a, b) => (a.category > b.category) ? 1 : -1);
+
   // Sort the state array by category
   storedItems.sort((a, b) => (a.category > b.category) ? 1 : -1);
 
@@ -36,19 +38,7 @@ function displayItems() {
           <div><i class="fa-solid fa-xmark" style="color: #d60a0a;"></i></div>
         `;
 
-<<<<<<< HEAD
     // itemList.appendChild(li);
-=======
-    let checkbox = divEl.querySelector(`#item${id}`);
-    checkbox.addEventListener('change', function(event){
-      let isChecked = event.target.checked;
-      item.isAdded = isChecked;
-      storedItems.sort((a, b) => (a.category > b.category) ? 1 : -1);
-      localStorage.setItem("itemsList", JSON.stringify(storedItems));
-      displayItems();
-    });
-
->>>>>>> 959eb9e6c2f1d7f1633b505765dd7d1798227ded
     itemList.appendChild(divEl);
   });
 }
@@ -60,10 +50,5 @@ const clearButton = document.getElementById("clear_list_button");
 clearButton.addEventListener("click", (event) => {
   event.preventDefault();
   itemList.innerHTML = "";
-<<<<<<< HEAD
   localStorage.removeItem("itemsList");
 });
-=======
-  localStorage.clear();
-});
->>>>>>> 959eb9e6c2f1d7f1633b505765dd7d1798227ded
