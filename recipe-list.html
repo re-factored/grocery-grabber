@@ -3,16 +3,28 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recipe Form</title>
-  
+  <title>Recipe Form | Grocery Grabber</title>
+  <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://kit.fontawesome.com/7f42bb4d5d.js" crossorigin="anonymous"></script>
-
 </head>
+<style>
+
+  h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+  }
+  
+</style>
 
 <body>
-
   <header class="flex flex-column items-center justify-center  w-full">
     <a href="index.html">    
       <img src="./assets/gg-transparent-logo2.png" alt="grocery Grabber logo">
@@ -20,8 +32,8 @@
     <a href="about-us.html">
       <img src="./assets/gg-team-logo.png" alt="grocery Grabber logo">
     </a>
-  </header>
 
+  </header>
 
   <main class="form-container pb-125">
     <form id="recipe-form" method="POST" onsubmit="handleFormSubmit(event)">
@@ -79,10 +91,10 @@
       <table id="ingredient-table">
         <thead>
           <tr>
-            <th><abbr title="Category">Cat<abbr></th>
+            <th><abbr title="Category">Cat</th><abbr></th>
             <th>Ingredient</th>
             <th>Qty</th>
-            <th><abbr title="Unit of Measurement">UOM<abbr></th>
+            <th><abbr title="Unit of Measurement">UOM</th><abbr></th>
             <th>Remove</th>
           </tr>
         </thead>
@@ -108,10 +120,10 @@
     <table id="selected-recipe-ingredients">
       <thead>
         <tr>
-          <th><abbr title="Category">Cat<abbr></th>
+          <th><abbr title="Category">Cat</th><abbr></th>
             <th>Ingredient</th>
             <th>Qty</th>
-            <th><abbr title="Unit of Measurement">UOM<abbr></th>
+            <th><abbr title="Unit of Measurement">UOM</th><abbr></th>
             <th>Remove</th>
         </tr>
       </thead>
@@ -119,17 +131,17 @@
       </tbody>
   </table>
   </main>
-  <footer>
+
+  <footer class="">
     <nav class="flex flex-row justify-around items-center">
-      <a href="./grocery-list.html" class="groceryToolTip"><i class="fa-solid fa-list-check fa-xl" style="color: #c0aa5d;"></i><span class="tooltiptext">Grocery List</span></a>
       <a href="./index.html" class="homeToolTip"><i class="fa-solid fa-house-chimney fa-xl" style="color: #c0aa5d;"></i><span class="tooltiptext">Home</span></a>
+      <a href="./grocery-list.html" class="groceryToolTip"><i class="fa-solid fa-list-check fa-xl" style="color: #c0aa5d;"></i><span class="tooltiptext">Grocery List</span></a>
       <a href="./recipe-list.html" class="recipeToolTip"><i class="fa-solid fa-book-open fa-xl" style="color: #c0aa5d;"></i><span class="tooltiptext">Recipe List</span></a>
       <a href="./about-us.html" class="teamToolTip"><i class="fa-solid fa-code fa-xl" style="color: #c0aa5d;"></i><span class="tooltiptext">Meet the Team</span></a>
     </nav>
     <p class="text-center">&copy; 2023 <a href="https://github.com/re-factored" target="_blank" rel="noopener noreferrer">RE-FACTORED Inc.</a><br> All Rights Reserved</p>
 </footer>
-
-  <script src="js/recipe.js"></script>
+  <script src="/js/app.js"></script>
 </body>
 
 </html>
