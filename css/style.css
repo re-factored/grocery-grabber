@@ -613,7 +613,7 @@ height:10px;
 }
 
 
-@media only screen and (max-width: 392.98px){
+@media (max-width: 392.98px){
   #splashScreen #directions .indexButton p {
       margin-top: 20px;
       font-size: 16px;
@@ -623,7 +623,7 @@ height:10px;
     padding: 20px 40px;
   }
   #splashScreen .indexHeader img{
-    width: 11rem;
+    width: 10rem;
     height: auto;
     margin-bottom: 0px;
   }
