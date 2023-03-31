@@ -28,7 +28,6 @@ main{
 #directions {
   display: flex;
   flex-direction: column;
-  align-items: start;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 10rem;
@@ -186,6 +185,12 @@ header .a {
 
 header img{
   width: 12rem;
+  height: auto;
+  margin-bottom: 0;
+}
+
+.indexHeader img{
+  width: 15rem;
   height: auto;
   margin-bottom: 0;
 }
