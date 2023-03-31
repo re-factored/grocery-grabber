@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recipe Form</title>
+  
   <link rel="stylesheet" href="css/style.css">
   <script src="https://kit.fontawesome.com/7f42bb4d5d.js" crossorigin="anonymous"></script>
 
@@ -22,60 +23,63 @@
   </header>
 
 
-  <main class="form-container">
+  <main class="form-container pb-125">
     <form id="recipe-form" method="POST" onsubmit="handleFormSubmit(event)">
       <fieldset>
         <legend>Add Recipe</legend>
       <div class="flex flex-column ">
         <div class="form-group flex flex-column">
-          <label for="recipe-name">Recipe Name:</label>
-          <input type="text" id="recipe-name" name="recipe-name" required>
+          <input type="text" id="recipe-name" name="recipe-name" placeholder="Recipe Name" required>
         </div>
         <div class="portions">
           <div class="form-group">
-            <label>Recipe Porition Size</label>
-            <input type="number" id="current-portion-size" placeholder="Portions the recipe makes">
+            <input type="number" id="current-portion-size" placeholder="Suggested Serving Size">
           </div>
           <div class="form-group">
-            <label for="">Desired Porition Size</label>
-            <input type="number" id="desired-portion-size" placeholder="Portions you want">
+            <input type="number" id="desired-portion-size" placeholder="Desired Serving Size ">
           </div>
         </div>
       </div>
       
-      <div class="">
-        <h2>Recipe Ingredients:</h2>
+      <div class="recipeIngredients">
         <div class="ingredient-input">
-          <select name="category" id="category" aria-label="Category">
-            <option value="" selected disabled>Category</option>
-            <option value="Fruit">Fruit</option>
-            <option value="Vegetable">Vegetable</option>
-            <option value="Canned Goods">Canned Goods</option>
-            <option value="Meat">Meat</option>
-            <option value="Seafood">Seafood</option>
-            <option value="Deli">Deli</option>
-            <option value="Bakery">Bakery</option>
-            <option value="Frozen Foods">Frozen Foods</option>
-            <option value="Personal Care">Personal Care</option>
-            <option value="Pet">Pet</option>
-          </select>
-          <input type="text" id="ingredient-input" placeholder="Ingredient">
-          <input type="number" id="quantity-input" placeholder="Quantity">
-          <select id="unit-input">
-            <option value="g">g</option>
-            <option value="ml">ml</option>
-            <option value="tsp">tsp</option>
-            <option value="tbsp">tbsp</option>
-            <option value="cup">cup</option>
-            <option value="pcs">pcs</option>
-          </select>
+          <h2>Recipe Ingredients:</h2>
+          <div class="form-group">
+            <select name="category" id="category" aria-label="Category">
+              <option value="" selected disabled>Category</option>
+              <option value="Fruit">Fruit</option>
+              <option value="Vegetable">Vegetable</option>
+              <option value="Canned Goods">Canned Goods</option>
+              <option value="Meat">Meat</option>
+              <option value="Seafood">Seafood</option>
+              <option value="Deli">Deli</option>
+              <option value="Bakery">Bakery</option>
+              <option value="Frozen Foods">Frozen Foods</option>
+              <option value="Personal Care">Personal Care</option>
+              <option value="Pet">Pet</option>
+            </select>
+          </div>
+          <div class="form-group"><input type="text" id="ingredient-input" placeholder="Ingredient"></div>
+          <div class="form-group"><input type="number" id="quantity-input" placeholder="Quantity"></div>
+          <div class="form-group">
+            <select id="unit-input">
+              <option value="" selected disabled>Select a measurement</option>
+              <option value="g">g</option>
+              <option value="ml">ml</option>
+              <option value="tsp">tsp</option>
+              <option value="tbsp">tbsp</option>
+              <option value="cup">cup</option>
+              <option value="pcs">pcs</option>
+            </select>
+          </div>
         </div>
         <button class="button " type="button" id="add-ingredient" onclick="addIngredient()">Add Ingredient</button>
       </div>
+
       <table id="ingredient-table">
         <thead>
           <tr>
-            <th><abbr title="category">Cat</th><abbr></th>
+            <th><abbr title="Category">Cat</th><abbr></th>
             <th>Ingredient</th>
             <th>Qty</th>
             <th><abbr title="Unit of Measurement">UOM</th><abbr></th>
@@ -85,40 +89,45 @@
         <tbody>
         </tbody>
       </table>
-      <button class="button" type="submit">Submit Recipe</button>
+      <button class="button mt-1" type="submit">Submit Recipe</button>
     </fieldset>
     </form>
 
+    <h2 class="text-center">Recipe List</h2>
     <table id="recipe-name-table">
       <thead>
         <tr>
-          <th>Recipe Name</th>
+          <th colspan="3">Recipe Name</th>
         </tr>
       </thead>
       <tbody>
       </tbody>
     </table>
 
-    <h2>Shopping List</h2>
+    <h2 class="text-center">Shopping List</h2>
     <table id="selected-recipe-ingredients">
       <thead>
         <tr>
-          <th>Category</th>
-          <th>Ingredient</th>
-          <th>Quantity</th>
-          <th>Unit</th>
-          <th>Remove</th>
+          <th><abbr title="Category">Cat</th><abbr></th>
+            <th>Ingredient</th>
+            <th>Qty</th>
+            <th><abbr title="Unit of Measurement">UOM</th><abbr></th>
+            <th>Remove</th>
         </tr>
       </thead>
       <tbody>
       </tbody>
   </table>
   </main>
-  <nav class="flex flex-row justify-around items-center">
-    <a href="./grocery-list.html" class=""><i class="fa-solid fa-list-check fa-xl" style="color: #c0aa5d;"></i></a>
-    <a href="./index.html" class=""><i class="fa-solid fa-house-chimney fa-xl" style="color: #c0aa5d;"></i></a>
-    <a href="./recipe-list.html" class=""><i class="fa-solid fa-book-open fa-xl" style="color: #c0aa5d;"></i></a>
-  </nav>
+  <footer class="">
+    <nav class="flex flex-row justify-around items-center">
+      <a href="./grocery-list.html" class="groceryToolTip"><i class="fa-solid fa-list-check fa-xl" style="color: #c0aa5d;"></i><span class="tooltiptext">Grocery List</span></a>
+      <a href="./index.html" class="homeToolTip"><i class="fa-solid fa-house-chimney fa-xl" style="color: #c0aa5d;"></i><span class="tooltiptext">Home</span></a>
+      <a href="./recipe-list.html" class="recipeToolTip"><i class="fa-solid fa-book-open fa-xl" style="color: #c0aa5d;"></i><span class="tooltiptext">Recipe List</span></a>
+      <a href="./about-us.html" class="teamToolTip"><i class="fa-solid fa-code fa-xl" style="color: #c0aa5d;"></i><span class="tooltiptext">Meet the Team</span></a>
+    </nav>
+    <p class="text-center">&copy; 2023 <a href="https://github.com/re-factored" target="_blank" rel="noopener noreferrer">RE-FACTORED Inc.</a><br> All Rights Reserved</p>
+</footer>
 
   <script src="js/recipe.js"></script>
 </body>

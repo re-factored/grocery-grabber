@@ -57,7 +57,8 @@ function addIngredient() {
   ingredientCell.textContent = ingredient;
   quantityCell.textContent = quantity;
   unitCell.textContent = unit;
-  removeCell.innerHTML = '<button onclick="removeIngredient(this)"><i class="fa-solid fa-xmark" style="color: #D60A0A;"></i></button>';
+  removeCell.innerHTML = '<i class="fa-solid fa-xmark fa-2x" style="color: #8b0000" onclick="removeIngredient(this)"></i>';
+
 
   document.getElementById("category").selectedIndex = 0;
   document.getElementById("ingredient-input").value = "";

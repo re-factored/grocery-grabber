@@ -1,12 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 
-*{
-  /* border: 1px solid gold; */
-  /* font-family: 'Poppins', sans-serif; */
-}
-
 html{
-  font-size: 18px;
+  font-size: 16px;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -17,15 +12,14 @@ body{
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: stretch;
   padding: 1.5rem;
   bottom: 50px;
-  /* overflow: hidden; */
 }
 
 main{
-  /* overflow-y: auto; */
+  overflow: auto;
   padding: 10px;
 }
 
@@ -34,7 +28,7 @@ main{
 #directions {
   display: flex;
   flex-direction: column;
-  align-items: st;
+  align-items: start;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 10rem;
@@ -50,9 +44,9 @@ main{
 
 #directions .indexButton p{
   margin-top: 25px;
+  font-size: 18px;
 }
 
-/* Set the margin for the direction links */
 #directions a {
   margin: 20px 5px;
   padding: 30px 60px;
@@ -68,7 +62,7 @@ main{
 }
 
 .form-container{
-  padding: 1rem;;
+  padding: 1rem;
   background: rgba(255, 255, 255, 0.37);
   box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.151);
   border-radius: 10px;
@@ -88,26 +82,39 @@ main{
   color: #000;
 }
 
+.recipe-group,
+.ingredient-input{
+  margin: 0px;
+  padding: 0px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ingredient-input h2{
+  margin: 5px 0;
+  margin-top: 15px;
+}
+
 input,
 select{
   height: 30px;
   font-size: 1rem;
 }
 
-
-.form-container .button-group,
-.ingredient-input button{
-  margin: 25px 0;
+.form-container .button-group{
+  margin: 25px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;  
 }
 
-.form-container .button-group button,
-.ingredient-input button {
-  margin: 0 10px;
+.form-container .button-group button {
+  margin: 0 4px;
+  font-size:14px;
 }
+
+/* Tooltips */
 
 .groceryToolTip{
 content:"Grocery List"
@@ -118,8 +125,13 @@ content:"Grocery List"
 .recipeToolTip{
   content:"Recipe List"
 }
+.teamToolTip{
+  content:"Meet the Team"
+}
+
 .groceryToolTip,
 .homeToolTip,
+.teamToolTip,
 .recipeToolTip{
   position: relative;
   display: inline-block;
@@ -152,28 +164,19 @@ content:"Grocery List"
 }
 
 .groceryToolTip:hover .tooltiptext,
+.groceryToolTip:hover .tooltiptext,
 .homeToolTip:hover .tooltiptext,
+.teamToolTip:hover .tooltiptext,
 .recipeToolTip:hover .tooltiptext {
   visibility: visible;
 }
-
-
 
 img {
   width: 100%;
 }
 
-.mb-2{margin-bottom: 2rem;}
-
-header p,
-footer p {
-  color: #fff;
-  text-align: center;
-  letter-spacing: 1px;
-}
-
-footer p{
-  padding-top: 19px;
+.mb-2{
+  margin-bottom: 2rem;
 }
 
 header .a {
@@ -198,6 +201,43 @@ header .button{
   transition: all 350ms;
 }
 
+header p,
+footer p {
+  color: #fff;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+footer p{
+  padding-top: 19px;
+}
+
+footer{
+  max-width: 460px;
+  margin: 0 auto;
+  background-color: #29315a;
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding:4px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+footer a {
+  color: #c0aa5d;
+  text-decoration: none;
+  padding: 0;
+  background-color: transparent;
+  font-weight: 0;
+  text-transform: uppercase;
+  border-radius: 0;
+  margin-top: 0;
+  transition: all 350ms;
+}
+
 .link,
 .button {
   color: #1e2546;
@@ -206,8 +246,7 @@ header .button{
   background-color: #c0aa5d;
   font-weight: 800;
   text-transform: uppercase;
-  border-radius: 5px;;
-  /* margin-top: 2rem; */
+  border-radius: 5px;
   transition: all 350ms;
 }
 
@@ -241,25 +280,11 @@ header .button{
   background-color: #fff;
 }
 
-footer{
-  max-width: 393px;
-  position: fixed;
-  bottom: 25px;
-  /* left: 0; */
-  padding-top: 1rem;
-  background-color: #29315a;
+.pb-125{
+  padding-bottom: 125px;
 }
-
-footer a {
-  color: #c0aa5d;
-  text-decoration: none;
-  padding: 0;
-  background-color: transparent;
-  font-weight: 0;
-  text-transform: uppercase;
-  border-radius: 0;
-  margin-top: 0;
-  transition: all 350ms;
+.mb-125{
+  margin-bottom: 125px;
 }
 
 .text-center{
@@ -337,38 +362,14 @@ footer a {
     margin-right: 10px;
 }
 
-#grocery-form legend {
-    font-weight: 800;
-    display: block;
-padding-inline-start: 2px;
-padding-inline-end: 2px;
+
+#grocery-form legend,
+#recipe-form legend{
+  font-weight: 800;
+  display: block;
+  padding-inline-start: 2px;
+  padding-inline-end: 2px;
 }
-
-.form-group .portions{
-  display: flex;
-  flex-direction: row;
-}
-
-.form-group .portions input{
-  width: 45%;
-  margin: 0 5px;
-}
-
-ingredient-input select,
-ingredient-input select option,
-ingredient-input input{
-  margin-bottom: 10px;
-  color: black;
-  height: 30px;
-  font-size: 1rem;
-}
-
-#ingredient-table{
-  width: 100%;
-  overflow-x: auto;
-}
-
-
 
 fieldset{
   display: block;
@@ -380,6 +381,46 @@ fieldset{
   padding-block-end: 0.625em;
   padding-inline-start: 0.75em;
   min-inline-size: min-content;
+}
+
+#ingredient-table,
+#recipe-name-table,
+#selected-recipe-ingredients{
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#ingredient-table, #ingredient-table td,
+#recipe-name-table, #recipe-name-table td,
+#selected-recipe-ingredients, #selected-recipe-ingredients td{
+  border: 1px solid rgba(88, 88, 88, 0.534);
+}
+
+#ingredient-table th, td,
+#recipe-name-table th, td,
+#selected-recipe-ingredients th, td{
+  text-align: left;
+  padding: 3px;
+}
+#ingredient-table th,
+#recipe-name-table th,
+#selected-recipe-ingredients th{
+  text-align: center;
+  padding: 3px;
+}
+
+#ingredient-table th,
+#recipe-name-table th,
+#selected-recipe-ingredients th{
+  background-color: #29315a;
+  color: #fff;
+  font-weight: 400;
+}
+
+#ingredient-table button,
+#selected-recipe-ingredients button{
+  margin-top: 20px;
 }
 
 .submit-btn {
@@ -463,14 +504,14 @@ input[type='checkbox']{
 /*About Us*/
 
 #aboutUs h1{
-  /* font-size: 2rem; */
-  font-size: 3vw;
+  font-size: 1.5rem;
   border: 2px solid #c0aa5d;
   color: #c0aa5d;
   border-radius: 5px;
   font-weight: 600;;
-  padding: 1.2rem 2rem
-  
+  padding: 1.2rem 2rem;
+  margin-top: 20px;
+  margin-bottom: -10px;  
 
 }
 
@@ -493,7 +534,6 @@ input[type='checkbox']{
 }
 
 .teamCard a{
-  /* padding: 2px; */
   margin: 0;
 }
 
@@ -541,3 +581,6 @@ input[type='checkbox']{
   margin: 0;
 }
 
+.about-headline {
+  text-align: center;
+}
