@@ -611,3 +611,28 @@ height:10px;
 ::-webkit-scrollbar-thumb:hover {
   background: #ffe37c; 
 }
+
+
+@media only screen and (max-width: 392.98px){
+  #splashScreen #directions .indexButton p {
+      margin-top: 20px;
+      font-size: 16px;
+  }
+
+  #splashScreen #direction a{
+    padding: 20px 40px;
+  }
+  #splashScreen .indexHeader img{
+    width: 11rem;
+    height: auto;
+    margin-bottom: 0px;
+  }
+
+  #splashScreen main {
+    overflow: hidden;
+  }
+
+  #splashScreen main{
+    padding-top: 75px;
+  }
+}
