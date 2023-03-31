@@ -11,62 +11,82 @@
 </head>
 
 <body>
-  <header class="flex flex-column items-center w-full">
-    <a href="index.html"> <img src="./assets/gg-transparent-logo.png" alt="grocery Grabber logo"></a>
-    <h1>Add a Recipe</h1>
+
+  <header class="flex flex-column items-center justify-center  w-full">
+    <a href="index.html">    
+      <img src="./assets/gg-transparent-logo2.png" alt="grocery Grabber logo">
+    </a>
+    <a href="about-us.html">
+      <img src="./assets/gg-team-logo.png" alt="grocery Grabber logo">
+    </a>
   </header>
 
-  <main>
+
+  <main class="form-container">
     <form id="recipe-form" method="POST" onsubmit="handleFormSubmit(event)">
-      <label for="recipe-name">Recipe Name:</label>
-      <input type="text" id="recipe-name" name="recipe-name" required>
-      <input type="number" id="current-portion-size" placeholder="Portions the recipe makes">
-      <input type="number" id="desired-portion-size" placeholder="Portions you want">
-      <br><br>
-      <h2>Recipe Ingredients:</h2>
-      <div class="ingredient-input">
-        <select name="category" id="category" aria-label="Category">
-          <option value="" selected disabled>Category</option>
-          <option value="Fruit">Fruit</option>
-          <option value="Vegetable">Vegetable</option>
-          <option value="Canned Goods">Canned Goods</option>
-          <option value="Meat">Meat</option>
-          <option value="Seafood">Seafood</option>
-          <option value="Deli">Deli</option>
-          <option value="Bakery">Bakery</option>
-          <option value="Frozen Foods">Frozen Foods</option>
-          <option value="Personal Care">Personal Care</option>
-          <option value="Pet">Pet</option>
-        </select>
-        <input type="text" id="ingredient-input" placeholder="Ingredient">
-        <input type="number" id="quantity-input" placeholder="Quantity">
-        <select id="unit-input">
-          <option value="g">g</option>
-          <option value="ml">ml</option>
-          <option value="tsp">tsp</option>
-          <option value="tbsp">tbsp</option>
-          <option value="cup">cup</option>
-          <option value="pcs">pcs</option>
-        </select>
+      <fieldset>
+        <legend>Add Recipe</legend>
+      <div class="flex flex-column ">
+        <div class="form-group flex flex-column">
+          <label for="recipe-name">Recipe Name:</label>
+          <input type="text" id="recipe-name" name="recipe-name" required>
+        </div>
+        <div class="portions">
+          <div class="form-group">
+            <label>Recipe Porition Size</label>
+            <input type="number" id="current-portion-size" placeholder="Portions the recipe makes">
+          </div>
+          <div class="form-group">
+            <label for="">Desired Porition Size</label>
+            <input type="number" id="desired-portion-size" placeholder="Portions you want">
+          </div>
+        </div>
       </div>
-
-
-
-      <button type="button" id="add-ingredient" onclick="addIngredient()">Add Ingredient</button>
+      
+      <div class="">
+        <h2>Recipe Ingredients:</h2>
+        <div class="ingredient-input">
+          <select name="category" id="category" aria-label="Category">
+            <option value="" selected disabled>Category</option>
+            <option value="Fruit">Fruit</option>
+            <option value="Vegetable">Vegetable</option>
+            <option value="Canned Goods">Canned Goods</option>
+            <option value="Meat">Meat</option>
+            <option value="Seafood">Seafood</option>
+            <option value="Deli">Deli</option>
+            <option value="Bakery">Bakery</option>
+            <option value="Frozen Foods">Frozen Foods</option>
+            <option value="Personal Care">Personal Care</option>
+            <option value="Pet">Pet</option>
+          </select>
+          <input type="text" id="ingredient-input" placeholder="Ingredient">
+          <input type="number" id="quantity-input" placeholder="Quantity">
+          <select id="unit-input">
+            <option value="g">g</option>
+            <option value="ml">ml</option>
+            <option value="tsp">tsp</option>
+            <option value="tbsp">tbsp</option>
+            <option value="cup">cup</option>
+            <option value="pcs">pcs</option>
+          </select>
+        </div>
+        <button class="button " type="button" id="add-ingredient" onclick="addIngredient()">Add Ingredient</button>
+      </div>
       <table id="ingredient-table">
         <thead>
           <tr>
-            <th>Category</th>
+            <th><abbr title="category">Cat</th><abbr></th>
             <th>Ingredient</th>
-            <th>Quantity</th>
-            <th>Unit</th>
+            <th>Qty</th>
+            <th><abbr title="Unit of Measurement">UOM</th><abbr></th>
             <th>Remove</th>
           </tr>
         </thead>
         <tbody>
         </tbody>
       </table>
-      <button type="submit">Submit Recipe</button>
+      <button class="button" type="submit">Submit Recipe</button>
+    </fieldset>
     </form>
 
     <table id="recipe-name-table">

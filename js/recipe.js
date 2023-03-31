@@ -129,8 +129,8 @@ function addRecipeNameToTable(recipeName) {
   const removeButtonCell = newRow.insertCell(2);
 
   nameCell.textContent = recipeName;
-  addButtonCell.innerHTML = '<button onclick="addRecipe(this)">Add</button>';
-  removeButtonCell.innerHTML = '<button onclick="removeRecipe(this)">Remove</button>';
+  addButtonCell.innerHTML = '<button class="button" onclick="addRecipe(this)">Add</button>';
+  removeButtonCell.innerHTML = '<button class="button" onclick="removeRecipe(this)">Remove</button>';
 }
 
 function addRecipe(button) {
