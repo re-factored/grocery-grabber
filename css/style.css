@@ -589,3 +589,26 @@ input[type='checkbox']{
 .about-headline {
   text-align: center;
 }
+
+
+    /* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #29315a; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #c0aa5d; 
+height:10px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ffe37c; 
+}
